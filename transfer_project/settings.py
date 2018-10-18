@@ -33,6 +33,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # project specific
+    'pages.apps.PagesConfig',
+    'users.apps.UsersConfig',
+    
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,8 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # project specific
-    'pages.apps.PagesConfig',
+    # 3rd party
+
 ]
 
 MIDDLEWARE = [
@@ -105,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

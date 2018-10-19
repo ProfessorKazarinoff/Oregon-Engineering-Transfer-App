@@ -8,12 +8,10 @@ from .models import CustomUser
 
 class CustomUserCreationForm(UserCreationForm):
     model = CustomUser
-    fields = UserCreationForm.Meta.fields + ('university','job',)
+    fields = UserCreationForm.Meta.fields + ("university", "job")
 
 
 class CustomUserChangeForm(UserChangeForm):
-
     class Meta:
         model = CustomUser
         fields = UserChangeForm.Meta.fields
-

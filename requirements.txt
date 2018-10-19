@@ -1,0 +1,13 @@
+appdirs==1.4.3
+attrs==18.2.0
+black==18.9b0
+certifi==2018.10.15
+Click==7.0
+Django==2.1.2
+django-bootstrap4==0.0.7
+django-crispy-forms==1.7.0
+Jinja2==2.10
+MarkupSafe==1.0
+pytz==2018.5
+toml==0.10.0
+wincertstore==0.2

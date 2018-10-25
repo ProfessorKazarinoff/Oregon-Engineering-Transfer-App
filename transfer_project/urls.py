@@ -31,7 +31,7 @@ urlpatterns = [
         auth_views.LogoutView.as_view(template_name="users/logout.html"),
         name="logout",
     ),
-    # path('users/', include('users.urls')),
+    path('courses/', include('courses.urls')),
     # path('users/', include('django.contrib.auth.urls')),
     path("", include("pages.urls")),
 ]

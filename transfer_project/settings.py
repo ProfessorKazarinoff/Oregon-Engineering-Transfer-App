@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     # project specific
     "pages.apps.PagesConfig",
     "users.apps.UsersConfig",
+    "courses.apps.CoursesConfig",
     # 3rd party
     "crispy_forms",
     # django
@@ -108,7 +109,7 @@ AUTH_USER_MODEL = "users.CustomUser"
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Los_Angeles"
 
 USE_I18N = True
 

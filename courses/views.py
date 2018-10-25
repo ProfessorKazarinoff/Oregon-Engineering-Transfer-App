@@ -8,4 +8,4 @@ from .models import Course
 
 class CourseListView(ListView):
     model = Course
-    template_name = 'courses/course_list.html'
+    template_name = "courses/course_list.html"

@@ -21,7 +21,7 @@ class Course(models.Model):
     added_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.course_number} {self.course_name} {self.college}'
+        return f"{self.course_number} {self.course_name} {self.college}"
 
     def get_absolute_url(self):
-        return reverse('course_detail', args=[str(self.id)])
+        return reverse("course_detail", args=[str(self.id)])

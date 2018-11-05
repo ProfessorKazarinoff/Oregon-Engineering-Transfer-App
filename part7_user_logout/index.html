@@ -579,7 +579,7 @@
 <h2 id="why-do-users-need-to-be-able-to-logout">Why do users need to be able to logout?</h2>
 <p>4-year University administrators need to be able to log in and out of the site. The 4-year University administrators need to be able to log in so that they can post which classes at a Community College transfer to which classes at their 4-year University. Once the 4-year University Administrators make changes, they need to be able to log out and then act like regular site users (see the same view that students see) to see their changes in effect. It is also good security practice to allow users to logout before then exit the site.</p>
 <h2 id="create-a-logout-template">Create a logout template</h2>
-<p>We need to build a logout page so the Univeristy administrators can logout (after they login). To create the logout functionality, first we'll build a new logout.html template. Let's put the logout.html tempate in the templates/users directory. The directory strucutre of the entire Django project is below:</p>
+<p>We need to build a logout page so the Univeristy administrators can logout (after they login). To create the logout functionality, first we'll build a new <code>logout.html</code> template. Let's put the logout.html tempate in the <code>templates/users/</code> directory. The directory strucutre of the entire Django project is below:</p>
 <pre><code class="text">├───pages
 │   ├───migrations
 │   │   └───__pycache__
@@ -596,7 +596,7 @@
 └───users
 </code></pre>
 
-<p>In the templates/users/logout.html template below, notice how we include the tag <code>{% url 'login' %}</code> so that users can back in again if they want to.</p>
+<p>In the <code>templates/users/logout.html</code> template below, notice how we include the tag <code>{% url 'login' %}</code> so that users can back in again if they want to.</p>
 <pre><code class="html">&lt;!-- templates/users/logout.html --&gt;
 
 {% extends 'bootstrap_base.html' %}
@@ -613,7 +613,7 @@
 </code></pre>
 
 <h2 id="modify-project-urls">Modify project urls</h2>
-<p>Now that the logout template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/logout, the logout template should pop up. Edit the transfer_project/urls.py file to include a new route for the logout template. We'll use Djangos build in <code>django.contrib.auth.views.LogoutView</code> as the view function. This view is very similar to to Django's built-in LoginView.</p>
+<p>Now that the logout template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/logout, the logout template should pop up. Edit the <code>transfer_project/urls.py</code> file to include a new route for the logout template. We'll use Djangos build in <code>django.contrib.auth.views.LogoutView</code> as the view function. This view is very similar to to Django's built-in LoginView.</p>
 <pre><code class="python"># transfer_project/urls.py
 
 from django.contrib import admin
@@ -640,7 +640,7 @@ urlpatterns = [
 {% endif %}
 </code></pre>
 
-<p>Let's add the <code>user.is_authenticated</code> functionality to the templates/nav.html template.</p>
+<p>Let's add the <code>user.is_authenticated</code> functionality to the <code>templates/nav.html</code> template.</p>
 <pre><code class="html">&lt;!-- templates/nav.html --&gt;
 
 &lt;nav class=&quot;navbar navbar-expand-md navbar-dark bg-dark fixed-top&quot;&gt;
@@ -681,7 +681,7 @@ urlpatterns = [
 
 <h2 id="run-the-local-server-and-login">Run the local server and login</h2>
 <p>Start the local server with:</p>
-<pre><code>(transfer) &gt; python manage.py runserver
+<pre><code class="text">(transfer)$ python manage.py runserver
 </code></pre>
 
 <p>Browse to http://localhost:8000 and select the [Administrators] dropdown from the navigation bar at the top of the page. Click the [Login] link.</p>
@@ -696,7 +696,7 @@ urlpatterns = [
 <p><img alt="Login Page" src="../images/login_page.png" /></p>
 <p>Neat.</p>
 <h2 id="show-user-logged-in-status-in-nav-bar">Show user logged in status in nav bar</h2>
-<p>Now let's build a way to show users that they are logged in. Right now, you have to click the [Administrators] link and see if Login or Logout is an option. This is the only way for a user to tell if they are logged in or logged out. We also want to provide a way for users to see their username, modify their profile, change their password and see their 4-year university's dashboard. I think we can fit all of this into the nav bar using some templating logic, but it's a lot for one template. So let's break up the functionality into a couple templates. A chunck of html tags are rendered if the user is logged in and a chuck of html tags are rendered if the user is logged out. First modify the templates/nav.html template to include logic that shows different things in the nav bar depending on if a user is logged in or logged out. Note the <code>{% include ' ' %}</code> tag. These are the sections of html we need to write in different files. </p>
+<p>Now let's build a way to show users that they are logged in. Right now, you have to click the [Administrators] link and see if Login or Logout is an option. This is the only way for a user to tell if they are logged in or logged out. We also want to provide a way for users to see their username, modify their profile, change their password and see their 4-year university's dashboard. I think we can fit all of this into the nav bar using some templating logic, but it's a lot for one template. So let's break up the functionality into a couple templates. A chunck of html tags are rendered if the user is logged in and a chuck of html tags are rendered if the user is logged out. First modify the <code>templates/nav.html</code> template to include logic that shows different things in the nav bar depending on if a user is logged in or logged out. Note the <code>{% include ' ' %}</code> tag. These are the sections of html we need to write in different files. </p>
 <pre><code class="html">&lt;!-- templates/nav.html --&gt;
 
 &lt;nav class=&quot;navbar navbar-expand-md navbar-dark bg-dark fixed-top&quot;&gt;
@@ -737,7 +737,11 @@ urlpatterns = [
 
 </code></pre>
 
-<p>Now we need to build the two templates we just specified in the nav.html template: logged_in_nav.html and login_nav_button.html</p>
+<p>Now we need to build the two templates we just specified in the <code>nav.html</code> template:</p>
+<ul>
+<li><code>logged_in_nav.html</code> and </li>
+<li><code>login_nav_button.html</code></li>
+</ul>
 <pre><code class="html">&lt;!-- templates/logged_in_nav_dropdown.html --&gt;
 
 &lt;ul class=&quot;nav justify-content-end&quot;&gt;
@@ -767,7 +771,7 @@ urlpatterns = [
 
 <h2 id="run-the-local-server-to-see-the-results">Run the local server to see the results</h2>
 <p>OK. Coding for logging in and out is complete. Let's see the results. Run the local server and login and log out with the nav buttons.</p>
-<pre><code class="text">(transfer) &gt; python manage.py runserver
+<pre><code class="text">(transfer)$ python manage.py runserver
 </code></pre>
 
 <p>When the user is not logged in, the page looks like:</p>
@@ -797,7 +801,7 @@ class LogoutPageTests(SimpleTestCase):
 </code></pre>
 
 <p>Now let's run our tests and see if they all pass. At the Anaconda Prompt, type:</p>
-<pre><code class="text">(transfer) &gt; python manage.py test
+<pre><code class="text">(transfer)$ python manage.py test
 </code></pre>
 
 <h2 id="summary">Summary</h2>

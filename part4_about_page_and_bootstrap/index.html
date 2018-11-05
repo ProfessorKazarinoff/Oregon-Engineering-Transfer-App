@@ -833,7 +833,7 @@
 <p>We need to make sure that both the overall project urls and the page app urls are set up for our new pages (the home page and about page).</p>
 <p>First check that the overall project url's are pointing to the pages url's:</p>
 <h3 id="project-urls">project urls</h3>
-<pre><code># transfer_project/urls.py
+<pre><code class="python"># transfer_project/urls.py
 
 from django.contrib import admin
 from django.urls import path, include
@@ -845,7 +845,7 @@ urlpatterns = [
 </code></pre>
 
 <h3 id="page-app-urls">page app urls</h3>
-<p>Now modify the page app urls. This means modifying the file pages/urls.py. Note the imports at the top of the file. And note how the AboutPageView.as_view() and HomePageView.as_view() methods are included in the paths.</p>
+<p>Now modify the page app urls. This means modifying the file <code>pages/urls.py</code>. Note the imports at the top of the file. And note how the <code>AboutPageView.as_view()</code> and <code>HomePageView.as_view()</code> methods are included in the paths.</p>
 <pre><code class="python"># pages/urls.py
 
 from django.urls import path
@@ -859,7 +859,7 @@ urlpatterns = [
 </code></pre>
 
 <h2 id="create-the-view-for-the-home-and-about-pages">Create the view for the home and about pages</h2>
-<p>Now within the pages app, we need to modify the pages/views.py file. We'll build a class-based view for the home page and build a class-based view for the about page. Note the imports at the top of the file. The class names for the views have to match the class names for the views which we included in the pages/urls.py file.</p>
+<p>Now within the pages app, we need to modify the <code>pages/views.py</code> file. We'll build a class-based view for the home page and build a class-based view for the about page. Note the imports at the top of the file. The class names for the views have to match the class names for the views which we included in the <code>pages/urls.py</code> file.</p>
 <pre><code class="python"># pages/views.py
 
 from django.views.generic import TemplateView
@@ -874,9 +874,9 @@ class AboutPageView(TemplateView):
 </code></pre>
 
 <h2 id="create-the-templates-for-the-home-and-about-pages">Create the templates for the home and about pages</h2>
-<p>Now we'll build three templates enventuall will render the home page and the about page. One template will be a base template and then the home and about templates will build upon this base template. Before we use the templates, a templates dir has to be created in the base project directory. All three templates will be saved in this templates/ directory.</p>
+<p>Now we'll build three templates enventuall will render the home page and the about page. One template will be a base template and then the home and about templates will build upon this base template. Before we use the templates, a <code>templates</code> directory has to be created in the base project directory. All three templates will be saved in this <code>templates/</code> directory.</p>
 <h3 id="add-template-path-to-project-settingspy">Add template path to project settings.py</h3>
-<p>After the templates directory is created (in the project root directory), the transfer_project/setting.py file needs to be modified to include the new templates directory. In the TEMPLATES block of the transfer_project/setting.py file, add [os.path.join(BASE_DIR, 'templates')] to 'DIRS':</p>
+<p>After the templates directory is created (in the project root directory), the <code>transfer_project/setting.py</code> file needs to be modified to include the new templates directory. In the TEMPLATES block of the <code>transfer_project/setting.py</code> file, add <code>[os.path.join(BASE_DIR, 'templates')]</code> to <code>'DIRS'</code>:</p>
 <pre><code class="python"># transfer_project/settings.py
 
 TEMPLATES = [
@@ -897,7 +897,7 @@ TEMPLATES = [
 </code></pre>
 
 <h3 id="base-template">Base template</h3>
-<p>Now we'll build the base template. This template acts as the parent template for the home and about templates. Create a base.html file in the templates directory.</p>
+<p>Now we'll build the base template. This template acts as the parent template for the home and about templates. Create a <code>base.html</code> file in the templates directory.</p>
 <pre><code class="html">&lt;!-- templates/base.html --&gt;
 
 {%  block doctype %}
@@ -926,7 +926,7 @@ TEMPLATES = [
 </code></pre>
 
 <h3 id="home-template">Home template</h3>
-<p>The home template is next. Create a home.html template in the templates directory. The home template extends the base template.</p>
+<p>The home template is next. Create a <code>home.html</code> template in the templates directory. The home template extends the base template.</p>
 <pre><code class="html">&lt;!-- templates/home.html --&gt;
 
 {% extends 'base.html' %}
@@ -942,7 +942,7 @@ TEMPLATES = [
 </code></pre>
 
 <h3 id="about-template">About template</h3>
-<p>The about template is next. Create an about.html template in the templates directory. The about template also extends the base template.</p>
+<p>The about template is next. Create an <code>about.html</code> template in the templates directory. The about template also extends the base template.</p>
 <pre><code class="html">&lt;!-- templates/about.html --&gt;
 
 {% extends 'base.html' %}
@@ -959,8 +959,8 @@ TEMPLATES = [
 
 <h3 id="run-the-local-server">Run the local server</h3>
 <p>Let's test the site. Run the local server and see our changes. I ran the server from the Anaconda Prompt.</p>
-<pre><code class="text">&gt; conda activate transfer
-(transfer)&gt; python manage.py runserver
+<pre><code class="text">$ conda activate transfer
+(transfer)$ python manage.py runserver
 </code></pre>
 
 <p>The resulting home and about pages should look something like this:</p>
@@ -969,7 +969,7 @@ TEMPLATES = [
 <h2 id="add-bootstrap-to-templates">Add Bootstrap to templates</h2>
 <p>Now we'll add bootstrap styling to the templates. I'm going to use the bootstrap CDN for simplicity instead of downloading and using the css and javascript files that make up bootstrap. As long there is an internet connection, the CDN link will work.</p>
 <h3 id="create-a-new-bootstrap_basehtml-template">Create a new bootstrap_base.html template</h3>
-<p>In the templates directory add another .html file called bootstrap_base.html. Include the following in the template. Note in the block stylesheets section there is a link to the bootstrap css. Near the bottom of the page, there are links to the bootstrap javascript. According to the bootstrap docs, the order of javascript links should go: jquery, popper.js, bootstrap.js. The links for the bootstrap CDN may change, the links I used are <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/">here</a>.</p>
+<p>In the templates directory add another .html file called <code>bootstrap_base.html</code>. Include the following in the template. Note in the block stylesheets section there is a link to the bootstrap css. Near the bottom of the page, there are links to the bootstrap javascript. According to the bootstrap docs, the order of javascript links should go: jquery, popper.js, bootstrap.js. The links for the bootstrap CDN may change, the links I used are <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/">here</a>.</p>
 <pre><code class="html">&lt;!-- templates/bootstrap_base.html --&gt;
 
 {% load staticfiles %}
@@ -1025,9 +1025,9 @@ TEMPLATES = [
 </code></pre>
 
 <h3 id="add-the-bootswatch-litera-bootstrap-theme-css-to-the-pages-appstaticcss-folder">Add the bootswatch litera bootstrap theme css to the pages app/static/css folder</h3>
-<p>I want the <a href="https://bootswatch.com/">bootswatch</a> <a href="https://bootswatch.com/litera/">litera theme</a> to style the site. I downloaded the <a href="https://bootswatch.com/4/litera/bootstrap.css">litera theme css</a> and added the css file to <code>/pages/static/css</code> as <code>bootswatch_litera_bootstrap.css</code>. That's the name of the css file we used in the bootstrap_home.html template. Note how the bootstrap_base.html template has the tag {% load staticfiles %}. This tag loads static files (css, javascript, images).</p>
+<p>I want the <a href="https://bootswatch.com/">bootswatch</a> <a href="https://bootswatch.com/litera/">litera theme</a> to style the site. I downloaded the <a href="https://bootswatch.com/4/litera/bootstrap.css">litera theme css</a> and added the css file to <code>/pages/static/css</code> as <code>bootswatch_litera_bootstrap.css</code>. That's the name of the css file we used in the <code>bootstrap_home.html</code> template. Note how the <code>bootstrap_base.html</code> template has the tag <code>{% load staticfiles %}</code>. This tag loads static files (css, javascript, images).</p>
 <p><a href="https://bootswatch.com/4/litera/bootstrap.css">https://bootswatch.com/4/litera/bootstrap.css</a></p>
-<p>I also added an additional small css file called navbar-top-fixed.css to the pages/static/css folder. Without this little piece of css, the main div block of the site was cut off by the nav bar.</p>
+<p>I also added an additional small css file called <code>navbar-top-fixed.css</code> to the <code>pages/static/css</code> folder. Without this little piece of css, the main div block of the site was cut off by the nav bar.</p>
 <pre><code class="css">/* pages/static/css/navbar-top-fixed.css */
 
 /* Show it is fixed to the top */
@@ -1039,7 +1039,7 @@ body {
 </code></pre>
 
 <h3 id="build-a-navhtml-template">Build a nav.html template</h3>
-<p>The bootstrap_base.html template has a section for a nav bar. The nav bar html is included in the bootstrap_base.html template in an {% include %} block:</p>
+<p>The <code>bootstrap_base.html</code> template has a section for a nav bar. The nav bar html is included in the <code>bootstrap_base.html</code> template in an <code>{% include %}</code> block:</p>
 <pre><code class="html">&lt;!-- templates/bootstrap_base.html --&gt;
 {%  block nav %}
     {% include &quot;nav.html&quot; %}
@@ -1081,7 +1081,7 @@ body {
 </code></pre>
 
 <h3 id="modify-the-homehtml-template-to-use-bootstrap">Modify the home.html template to use bootstrap</h3>
-<p>Next modify the home page template to use bootstrap styling. Note the bootstrap_base.html template is now used as the parent template.</p>
+<p>Next modify the home page template to use bootstrap styling. Note the <code>bootstrap_base.html</code> template is now used as the parent template.</p>
 <pre><code class="html">&lt;!-- templates/home.html --&gt;
 
 {% extends 'bootstrap_base.html' %}
@@ -1098,7 +1098,7 @@ body {
 </code></pre>
 
 <h3 id="modify-the-abouthtml-template-to-use-bootstrap">Modify the about.html template to use bootstrap</h3>
-<p>Now modify the about page template to use bootstrap styling. Note again how the bootstrap_base.html template is used as the parent template.</p>
+<p>Now modify the about page template to use bootstrap styling. Note again how the <code>bootstrap_base.html</code> template is used as the parent template.</p>
 <pre><code class="html">&lt;!-- templates/about.html --&gt;
 
 {% extends 'bootstrap_base.html' %}
@@ -1118,8 +1118,8 @@ body {
 <p><img alt="file structure after bootstrap" src="../images/file_structure_after_bootstrap.png" /></p>
 <h2 id="run-the-server-locally-see-if-the-bootstrap-styling-works">Run the server locally. See if the bootstrap styling works.</h2>
 <p>OK, let's run the server locally and see if all the bootstrap styling changes made a difference. I ran the local server from the Anaconda Prompt.</p>
-<pre><code class="text">&gt; conda activate transfer
-(transfer)&gt; python manage.py runserver
+<pre><code class="text">$ conda activate transfer
+(transfer)$ python manage.py runserver
 </code></pre>
 
 <p><img alt="about page with bootstrap styling" src="../images/home_page_bootstrap_stying.png" /></p>
@@ -1128,7 +1128,7 @@ body {
 <h2 id="write-and-run-tests-for-two-pages">Write and run tests for two pages</h2>
 <p>It's good practice to write tests for our django project. Django has a built-in test framework that allows us to test the home page and test the about page. In the pages app, we'll modify the tests.py file to include these tests. Once the tests are written, the tests can be run from the Anaconda Prompt.</p>
 <h3 id="write-tests">Write tests</h3>
-<p>Write the tests in the pages/tests.py file:</p>
+<p>Write the tests in the <code>pages/tests.py</code> file:</p>
 <pre><code class="python"># pages/tests.py
 
 from django.test import SimpleTestCase
@@ -1146,8 +1146,8 @@ class PagesTests(SimpleTestCase):
 </code></pre>
 
 <h3 id="run-tests">Run tests</h3>
-<p>Run the tests with the manage.py test command. If the local server is still running key in [Ctrl-c] to stop the server.</p>
-<pre><code class="text">(transfer)&gt; python manage.py test
+<p>Run the tests with the <code>manage.py test</code> command. If the local server is still running key in [Ctrl-c] to stop the server.</p>
+<pre><code class="text">(transfer)$ python manage.py test
 </code></pre>
 
 <p>The output I got after running the tests looked something like:</p>

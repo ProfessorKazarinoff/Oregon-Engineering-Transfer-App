@@ -579,7 +579,7 @@
 <h2 id="why-have-a-user-profile">Why have a user profile</h2>
 <p>We want administrators to be able to change their username, email address, job or university. We also want a way for administrators to include some of that information if it isn't part of their profile yet.</p>
 <h2 id="create-a-profile-page">Create a profile page</h2>
-<p>We need to build a profile page so the Univeristy administrators can see their user details and make changes to their user details. To create the profile page functionality, first we'll build a new profile.html template. Let's put the profile.html tempate in the templates/users directory. The directory strucutre of the entire Django project is below:</p>
+<p>We need to build a profile page so the Univeristy administrators can see their user details and make changes to their user details. To create the profile page functionality, first we'll build a new <code>profile.html</code> template. Let's put the profile.html tempate in the <code>templates/users/</code> directory. The directory strucutre of the entire Django project is below:</p>
 <pre><code class="text">├───pages
 │   ├───migrations
 │   │   └───__pycache__
@@ -597,7 +597,7 @@
 └───users
 </code></pre>
 
-<p>In the templates/users/profile.html template below, notice how we include tags for each of the user's details such as username, email, job and university</p>
+<p>In the <code>templates/users/profile.html</code> template below, notice how we include tags for each of the user's details such as username, email, job and University.</p>
 <pre><code class="html">&lt;!-- templates/users/profile.html --&gt;
 
 {% extends 'bootstrap_base.html' %}
@@ -617,7 +617,7 @@
 </code></pre>
 
 <h2 id="modify-project-urls">Modify project urls</h2>
-<p>Now that the user profile template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/users/profile, the profile template should pop up. Edit the transfer_project/urls.py file to include a new route for the user profile template. We'll point to the user app's url's from the project url's. The logic to serve the profile page view will come from the user app's urls.py file.</p>
+<p>Now that the user profile template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/users/profile, the profile template should pop up. Edit the <code>transfer_project/urls.py</code> file to include a new route for the user profile template. We'll point to the user app's url's from the project url's. The logic to serve the profile page view will come from the user app's <code>users/urls.py</code> file.</p>
 <pre><code class="python"># transfer_project/urls.py
 
 from django.contrib import admin
@@ -682,7 +682,7 @@ urlpatterns = [
 
 <h2 id="run-the-local-server-to-see-the-results">Run the local server to see the results</h2>
 <p>OK. We should be able to see the profile page now. Let's start the local server, login and browse to the profile page using the dropdown menu on the righthand side of the nav bar.</p>
-<pre><code class="text">(transfer) &gt; python manage.py runserver
+<pre><code class="text">(transfer)$ python manage.py runserver
 </code></pre>
 
 <p>When the user is not logged in, the page looks like:</p>
@@ -711,7 +711,7 @@ class ProfilePageTests(TestCase):
 </code></pre>
 
 <p>Now let's run our tests and see if they all pass. At the Anaconda Prompt, type:</p>
-<pre><code class="text">(transfer) &gt; python manage.py test
+<pre><code class="text">(transfer)$ python manage.py test
 </code></pre>
 
 <p>The tests passed! Now our Django app has a working profile page.</p>

@@ -306,12 +306,161 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
-      
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Oregon Engineering College Transfer App - Part 5: User Model
+      </label>
     
     <a href="./" title="Oregon Engineering College Transfer App - Part 5: User Model" class="md-nav__link md-nav__link--active">
       Oregon Engineering College Transfer App - Part 5: User Model
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Page Contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-user-model" title="What is a user model?" class="md-nav__link">
+    What is a user model?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-do-users-need-to-be-able-to-do" title="What do users need to be able to do?" class="md-nav__link">
+    What do users need to be able to do?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transfer-app-site-privileges" title="Transfer App site privileges" class="md-nav__link">
+    Transfer App site privileges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-app-user-actions" title="Transfer App user actions" class="md-nav__link">
+    Transfer App user actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-users-app" title="Create the users app" class="md-nav__link">
+    Create the users app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-user-model" title="Create a user model" class="md-nav__link">
+    Create a user model
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-user-app-to-list-of-installed-apps" title="Add user app to list of installed apps" class="md-nav__link">
+    Add user app to list of installed apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-users-model-in-the-users-app" title="Create the users model in the users app" class="md-nav__link">
+    Create the users model in the users app
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-users-form-in-usersformspy" title="Create a users form in users/forms.py" class="md-nav__link">
+    Create a users form in users/forms.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-user-creation-and-user-change-forms-to-the-django-admin" title="Add user creation and user change forms to the Django admin" class="md-nav__link">
+    Add user creation and user change forms to the Django admin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-migrations-and-migrate" title="Make migrations and migrate" class="md-nav__link">
+    Make migrations and migrate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-super-user-at-the-command-line" title="Create a super user at the command line" class="md-nav__link">
+    Create a super user at the command line
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-local-server-and-log-into-the-django-admin" title="Start the local server and log into the Django Admin" class="md-nav__link">
+    Start the local server and log into the Django Admin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-users-with-the-django-admin" title="Create users with the django admin" class="md-nav__link">
+    Create users with the django admin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-the-user-app-adminpy-to-include-the-fields-job-and-university" title="Modify the user app admin.py to include the fields 'job' and 'university'" class="md-nav__link">
+    Modify the user app admin.py to include the fields 'job' and 'university'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" title="Future Work" class="md-nav__link">
+    Future Work
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -378,8 +527,146 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">Page Contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-user-model" title="What is a user model?" class="md-nav__link">
+    What is a user model?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-do-users-need-to-be-able-to-do" title="What do users need to be able to do?" class="md-nav__link">
+    What do users need to be able to do?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transfer-app-site-privileges" title="Transfer App site privileges" class="md-nav__link">
+    Transfer App site privileges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-app-user-actions" title="Transfer App user actions" class="md-nav__link">
+    Transfer App user actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-users-app" title="Create the users app" class="md-nav__link">
+    Create the users app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-user-model" title="Create a user model" class="md-nav__link">
+    Create a user model
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-user-app-to-list-of-installed-apps" title="Add user app to list of installed apps" class="md-nav__link">
+    Add user app to list of installed apps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-users-model-in-the-users-app" title="Create the users model in the users app" class="md-nav__link">
+    Create the users model in the users app
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-users-form-in-usersformspy" title="Create a users form in users/forms.py" class="md-nav__link">
+    Create a users form in users/forms.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-user-creation-and-user-change-forms-to-the-django-admin" title="Add user creation and user change forms to the Django admin" class="md-nav__link">
+    Add user creation and user change forms to the Django admin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-migrations-and-migrate" title="Make migrations and migrate" class="md-nav__link">
+    Make migrations and migrate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-super-user-at-the-command-line" title="Create a super user at the command line" class="md-nav__link">
+    Create a super user at the command line
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-local-server-and-log-into-the-django-admin" title="Start the local server and log into the Django Admin" class="md-nav__link">
+    Start the local server and log into the Django Admin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-users-with-the-django-admin" title="Create users with the django admin" class="md-nav__link">
+    Create users with the django admin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-the-user-app-adminpy-to-include-the-fields-job-and-university" title="Modify the user app admin.py to include the fields 'job' and 'university'" class="md-nav__link">
+    Modify the user app admin.py to include the fields 'job' and 'university'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" title="Future Work" class="md-nav__link">
+    Future Work
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -393,6 +680,8 @@
                 
                   <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/edit/master/docs/part5_user_model.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
+                
+                  <h1>Oregon Engineering College Transfer App - Part 5: User Model</h1>
                 
                 <p>Summary: This is the fifth part of a multi-part series on building a web app with Python and Django. The web app will act as a resource for Engineering students at Oregon Community Colleges who want to transfer to 4-year Universities. The transfer web app will show which classes from their Community College Engineering program will transfer to which classes in a 4-year University Engineering program. In this fifth post, we'll build a user model that will allow us to add new users, allow users to login, and allow users to logout. We'll test this user model with the Django admin.</p>
 <div class="toc">
@@ -413,13 +702,11 @@
 <li><a href="#add-user-creation-and-user-change-forms-to-the-django-admin">Add user creation and user change forms to the Django admin</a></li>
 <li><a href="#make-migrations-and-migrate">Make migrations and migrate</a></li>
 <li><a href="#create-a-super-user-at-the-command-line">Create a super user at the command line</a></li>
-<li><a href="#start-the-local-server-and-log-into-the-django-admin">Start the local server and log into the Django Admin</a><ul>
+<li><a href="#start-the-local-server-and-log-into-the-django-admin">Start the local server and log into the Django Admin</a></li>
 <li><a href="#create-users-with-the-django-admin">Create users with the django admin</a></li>
-<li><a href="#mondify-the-user-app-adminpy-to-include-the-fields-job-and-university">Mondify the user app admin.py to include the fields 'job' and 'university'</a></li>
+<li><a href="#modify-the-user-app-adminpy-to-include-the-fields-job-and-university">Modify the user app admin.py to include the fields 'job' and 'university'</a></li>
 <li><a href="#summary">Summary</a></li>
 <li><a href="#future-work">Future Work</a></li>
-</ul>
-</li>
 </ul>
 </div>
 <h2 id="what-is-a-user-model">What is a user model?</h2>
@@ -430,7 +717,7 @@
 <ul>
 <li>log into the Transfer App website</li>
 <li>Create a new 4-year University</li>
-<li>Classes and edit classes at their 4-year University</li>
+<li>Create and edit classes at their 4-year University</li>
 <li>Create and edit classes at 2-year Community Colleges</li>
 <li>Create and edit which community College Classes are equivalent to which University classes</li>
 </ul>
@@ -446,10 +733,10 @@
 <p>We'll build some of these Transfer App user actions in this post.</p>
 <h2 id="create-the-users-app">Create the users app</h2>
 <p>At the Anaconda Prompt activate the <code>(transfer)</code> virtual environment and run the <code>startapp</code> command to create a new Django app in our Django project. We already have a <strong>pages</strong> app in our project. Now we need to add a <strong>users</strong> app to the project.</p>
-<pre><code class="text">&gt; cd tranfer_project
+<pre><code class="text">$ cd tranfer_project
 # make sure you are in the project base directory
-&gt; conda activate transfer
-(transfer)&gt; python manage.py startapp users
+$ conda activate transfer
+(transfer)$ python manage.py startapp users
 </code></pre>
 
 <h2 id="create-a-user-model">Create a user model</h2>
@@ -545,8 +832,8 @@ admin.site.register(CustomUser,CustomUserAdmin)
 
 <h2 id="make-migrations-and-migrate">Make migrations and migrate</h2>
 <p>We made changes to the database, so before we start the local server and see if our user model works, we need to <code>makemigrations</code> and <code>migrate</code> the database changes.</p>
-<pre><code class="text">(transfer)&gt; python manage.py makemigrations users
-(transfer)&gt; python manage.py migrate
+<pre><code class="text">(transfer)$ python manage.py makemigrations users
+(transfer)$ python manage.py migrate
 </code></pre>
 
 <p>I had problems with this command and was returned the error</p>
@@ -554,7 +841,7 @@ admin.site.register(CustomUser,CustomUserAdmin)
 </code></pre>
 
 <p>Running the command below didn't solve the problem.</p>
-<pre><code class="text">python manage.py makemigrations --merge
+<pre><code class="text">(transfer)$ python manage.py makemigrations --merge
 </code></pre>
 
 <p>Commenting out the django.admin app from the list of installed apps didn't work either.</p>
@@ -567,18 +854,18 @@ admin.site.register(CustomUser,CustomUserAdmin)
 
 <p>I also tried deleting the  users.0001_initial.py file from the user app migrations folder. That worked for the makemigrations step, but it didn't work for the migrate step.</p>
 <p>The thing that eventually worked was deleting the db.sqlite3 file in the base project directory and then running the commands again. </p>
-<pre><code class="text">(transfer)&gt; python manage.py makemigrations users
-(transfer)&gt; python manage.py migrate
+<pre><code class="text">(transfer)$ python manage.py makemigrations users
+(transfer)$ python manage.py migrate
 </code></pre>
 
 <p>Running makemigrations and migtrate created a new db.sqlite3 file and seems to work. Once users are created, this is obviously a poor solution. We don't want to erase the entire database each time we make a change to the app, but erasing the database worked to solve the problem right now. </p>
 <h2 id="create-a-super-user-at-the-command-line">Create a super user at the command line</h2>
 <p>We need to create a super user at the command line so that we can log into the Django admin. With no users set up yet, there is no way to log into the Django admin and see if our user model works.</p>
-<pre><code class="text">(transfer) &gt; python manage.py createsuperuser
+<pre><code class="text">(transfer)$ python manage.py createsuperuser
 </code></pre>
 
 <p>You'll be asked for a username, email address and password. Note that the email address we use has to be different from the email address that will eventually be used with the email service.</p>
-<h1 id="start-the-local-server-and-log-into-the-django-admin">Start the local server and log into the Django Admin</h1>
+<h2 id="start-the-local-server-and-log-into-the-django-admin">Start the local server and log into the Django Admin</h2>
 <p>Now let's see if our user model worked. Run the Django project locally with:</p>
 <pre><code class="text">(transfer)&gt; python manage.py runserver
 </code></pre>
@@ -594,7 +881,7 @@ admin.site.register(CustomUser,CustomUserAdmin)
 <h2 id="create-users-with-the-django-admin">Create users with the django admin</h2>
 <p>Using the Django admin dashboard, create a new user by clicking the [+user] button.</p>
 <p><img alt="Django admin create new user" src="../images/django_admin_create_user.png" /></p>
-<h2 id="mondify-the-user-app-adminpy-to-include-the-fields-job-and-university">Mondify the user app admin.py to include the fields 'job' and 'university'</h2>
+<h2 id="modify-the-user-app-adminpy-to-include-the-fields-job-and-university">Modify the user app admin.py to include the fields 'job' and 'university'</h2>
 <p>We can only see USERNAME, EMAIL ADDRESS, FIRST NAME, LAST NAME, and STAFF STATUS when we look at the Django admin pannel. Our custom fields 'university' and 'job' are not shown. To make these show up, we need to modify the /users/admin.py file and include a list_disply of all the fields we want shown.</p>
 <pre><code class="python"># users/admin.py
 
@@ -616,7 +903,7 @@ admin.site.register(CustomUser,CustomUserAdmin)
 </code></pre>
 
 <p>Restart the server with</p>
-<pre><code class="text">(transfer)&gt; python manage.py runserver
+<pre><code class="text">(transfer)$ python manage.py runserver
 </code></pre>
 
 <p>Browse to the user dashboard and see the new fields presented.</p>

@@ -44,9 +44,9 @@ Or click the arrows at the bottom of each page.
  
  ## To work on the project locally
  
- Install the [Anaconda distribution of Python](https://anaconda.com/downloads). Open the Anacond Prompt. Run the following commands:
+ Install the [Anaconda distribution of Python](https://anaconda.com/downloads). Open the Anaconda Prompt. Run the following commands:
  
- ```
+ ```text
  git clone https://github.com/professorkazarinoff/oregon-transfer-app.git transfer
  cd transfer
  conda create -n transfer python=3.7

@@ -1,4 +1,4 @@
-site_name: ENGR114-JupyterHub-Deployment
+site_name: Oregon-Transfer-App-Docs
 
 # Configuration
 theme:
@@ -19,5 +19,5 @@ markdown_extensions:
   - admonition
   - footnotes
   - toc
-repo_url: https://github.com/ProfessorKazarinoff/oregon-transfer-a
+repo_url: https://github.com/ProfessorKazarinoff/oregon-transfer-app
 copyright: 'Copyright &copy; 2018 Peter D. Kazarinoff'

@@ -198,3 +198,7 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
+
+# MkDocs documentation
+site/
+docs/site/

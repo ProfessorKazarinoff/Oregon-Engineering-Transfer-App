@@ -1,0 +1,23 @@
+site_name: ENGR114-JupyterHub-Deployment
+
+# Configuration
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  language: 'en'
+  palette:
+    primary: 'green'
+    accent: 'light green'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo:
+    icon: 'build'
+
+# Markdown Extensions
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc
+repo_url: https://github.com/ProfessorKazarinoff/oregon-transfer-a
+copyright: 'Copyright &copy; 2018 Peter D. Kazarinoff'

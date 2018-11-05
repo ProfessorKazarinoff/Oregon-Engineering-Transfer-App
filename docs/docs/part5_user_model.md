@@ -26,7 +26,7 @@ The 4-year University administrators need to be able to do a couple things:
 
  * log into the Transfer App website
  * Create a new 4-year University
- * Classes and edit classes at their 4-year University
+ * Create and edit classes at their 4-year University
  * Create and edit classes at 2-year Community Colleges
  * Create and edit which community College Classes are equivalent to which University classes
 
@@ -46,10 +46,10 @@ We'll build some of these Transfer App user actions in this post.
 At the Anaconda Prompt activate the ```(transfer)``` virtual environment and run the ```startapp``` command to create a new Django app in our Django project. We already have a **pages** app in our project. Now we need to add a **users** app to the project.
 
 ```text
-> cd tranfer_project
+$ cd tranfer_project
 # make sure you are in the project base directory
-> conda activate transfer
-(transfer)> python manage.py startapp users
+$ conda activate transfer
+(transfer)$ python manage.py startapp users
 ```
 
 ## Create a user model
@@ -164,8 +164,8 @@ admin.site.register(CustomUser,CustomUserAdmin)
 We made changes to the database, so before we start the local server and see if our user model works, we need to ```makemigrations``` and ```migrate``` the database changes.
 
 ```text
-(transfer)> python manage.py makemigrations users
-(transfer)> python manage.py migrate
+(transfer)$ python manage.py makemigrations users
+(transfer)$ python manage.py migrate
 ```
 
 I had problems with this command and was returned the error
@@ -177,7 +177,7 @@ django.db.migrations.exceptions.InconsistentMigrationHistory: Migration admin.00
 Running the command below didn't solve the problem.
 
 ```text
-python manage.py makemigrations --merge
+(transfer)$ python manage.py makemigrations --merge
 ```
 
 Commenting out the django.admin app from the list of installed apps didn't work either.
@@ -195,8 +195,8 @@ I also tried deleting the  users.0001_initial.py file from the user app migratio
 The thing that eventually worked was deleting the db.sqlite3 file in the base project directory and then running the commands again. 
 
 ```text
-(transfer)> python manage.py makemigrations users
-(transfer)> python manage.py migrate
+(transfer)$ python manage.py makemigrations users
+(transfer)$ python manage.py migrate
 ```
 
 Running makemigrations and migtrate created a new db.sqlite3 file and seems to work. Once users are created, this is obviously a poor solution. We don't want to erase the entire database each time we make a change to the app, but erasing the database worked to solve the problem right now. 
@@ -207,12 +207,12 @@ Running makemigrations and migtrate created a new db.sqlite3 file and seems to w
 We need to create a super user at the command line so that we can log into the Django admin. With no users set up yet, there is no way to log into the Django admin and see if our user model works.
 
 ```text
-(transfer) > python manage.py createsuperuser
+(transfer)$ python manage.py createsuperuser
 ```
 
 You'll be asked for a username, email address and password. Note that the email address we use has to be different from the email address that will eventually be used with the email service.
 
-# Start the local server and log into the Django Admin
+## Start the local server and log into the Django Admin
 
 Now let's see if our user model worked. Run the Django project locally with:
 
@@ -239,7 +239,7 @@ Using the Django admin dashboard, create a new user by clicking the [+user] butt
 
 ![Django admin create new user](images/django_admin_create_user.png)
 
-## Mondify the user app admin.py to include the fields 'job' and 'university'
+## Modify the user app admin.py to include the fields 'job' and 'university'
 
 We can only see USERNAME, EMAIL ADDRESS, FIRST NAME, LAST NAME, and STAFF STATUS when we look at the Django admin pannel. Our custom fields 'university' and 'job' are not shown. To make these show up, we need to modify the /users/admin.py file and include a list_disply of all the fields we want shown.
 
@@ -266,7 +266,7 @@ admin.site.register(CustomUser,CustomUserAdmin)
 Restart the server with
 
 ```text
-(transfer)> python manage.py runserver
+(transfer)$ python manage.py runserver
 ```
 
 Browse to the user dashboard and see the new fields presented.

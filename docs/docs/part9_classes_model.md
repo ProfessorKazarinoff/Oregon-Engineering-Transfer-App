@@ -24,7 +24,7 @@ We need to build a courses app to contain our courses model. New Django apps, wh
 
 ```text
 $ conda activate transfer
-(transfer) $ python manage.py startapp courses
+(transfer)$ python manage.py startapp courses
 ```
 
 Now we need to add the new courses app to the list of installed apps in our Django project
@@ -125,8 +125,8 @@ class Course(models.Model):
 Now that the courses model is added, we need to migrate the model to the database.
 
 ```text
-(transfer) $ python manage.py makemigrations courses
-(transfer) $ python manage.py migrate
+(transfer)$ python manage.py makemigrations courses
+(transfer)$ python manage.py migrate
 ```
 
 ## Add courses model to the Django admin and test
@@ -181,7 +181,7 @@ We want to create a url for our courses page. This needs to be accomplished in t
 
 ### Add a courses URL to the project urls
 
-We'll add the sub-url ```/courses``` to proceed any url's that display course pages. In the project url's, we'll add a url route to go to our courses app url's
+We'll add the sub-url ```/courses``` to proceed any url's that display course pages. In the project url's, we'll add a url route to go to our courses app url's.
 
 ```python
 # transfer_project/urls.py
@@ -208,7 +208,7 @@ urlpatterns = [
 
 ```
 
-Any url that starts with ```/courses``` is now routed to the courses app urls. So now we need to modify the courses app urls. Create a new url.py file in the courses app directory.
+Any url that starts with ```/courses``` is now routed to the courses app urls. So now we need to modify the courses app urls. Create a new ```url.py``` file in the ```courses/``` app directory.
 
 ```python
 # courses/urls.py
@@ -226,7 +226,7 @@ We named the ```CourseListView``` as the view called when the ```/courses``` url
 
 ## Create a courses View
 
-To create the ```CourseListView```, we'll create a custom class-based view from Django's generic ```ListView``` class. We'll assign the view to use the course_list.html template, which we'll put in the tempates/courses directory
+To create the ```CourseListView```, we'll create a custom class-based view from Django's generic ```ListView``` class. We'll assign the view to use the ```course_list.html``` template, which we'll put in the ```tempates/courses/``` directory.
 
 ```python
 # courses/views.py
@@ -245,7 +245,7 @@ class CourseListView(ListView):
 
 ## Create a courses template
 
-Our course list view is pointing to the template ```ourses/course_list.html``` so that's the template we'll construct next. We'll use bootstrap cards for each course in the template. Django's generic ListView class provides an object called object_list. Since our CourseListView is daughter class of the ListView class, our CourseListView also provides an object called object_list. When we iterate over object_list, we'll iterate over the two courses we created in the Django admin.
+Our course list view is pointing to the template ```ourses/course_list.html``` so that's the template we'll construct next. We'll use bootstrap cards for each course in the template. Django's generic ```ListView``` class provides an object called ```object_list```. Since our ```CourseListView``` is daughter class of the ```ListView``` class, our ```CourseListView``` also provides an object called ```object_list```. When we iterate over ```object_list```, we'll iterate over the two courses we created in the Django admin.
 
 ```html
 <!-- templates/courses/course_list.html -->
@@ -276,10 +276,10 @@ Our course list view is pointing to the template ```ourses/course_list.html``` s
 
 ## Run the local server to see the results
 
-OK. We should be able to see the course page list now. Let's run the local server and browse to the /courses page.
+OK. We should be able to see the course page list now. Let's run the local server and browse to the localhost:8000/courses page.
 
 ```text
-(transfer) > python manage.py runserver
+(transfer)$ python manage.py runserver
 ``` 
 
  > localhost:8000/courses
@@ -312,7 +312,7 @@ class CoursesListPageTests(TestCase):
 Now let's run our tests and see if they all pass. At the Anaconda Prompt, type:
 
 ```text
-(transfer) > python manage.py test
+(transfer)$ python manage.py test
 ```
 
 The tests passed! Now our Django app has a working profile page.

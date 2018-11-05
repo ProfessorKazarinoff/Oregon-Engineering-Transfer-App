@@ -20,7 +20,7 @@ This is the 7th part of a multi-part series on building a web app with Python an
 
 ## Create a logout template
 
-We need to build a logout page so the Univeristy administrators can logout (after they login). To create the logout functionality, first we'll build a new logout.html template. Let's put the logout.html tempate in the templates/users directory. The directory strucutre of the entire Django project is below:
+We need to build a logout page so the Univeristy administrators can logout (after they login). To create the logout functionality, first we'll build a new ```logout.html``` template. Let's put the logout.html tempate in the ```templates/users/``` directory. The directory strucutre of the entire Django project is below:
 
 ```text
 ├───pages
@@ -39,7 +39,7 @@ We need to build a logout page so the Univeristy administrators can logout (afte
 └───users
 ```
 
-In the templates/users/logout.html template below, notice how we include the tag ```{% url 'login' %}``` so that users can back in again if they want to.
+In the ```templates/users/logout.html``` template below, notice how we include the tag ```{% url 'login' %}``` so that users can back in again if they want to.
 
 ```html
 <!-- templates/users/logout.html -->
@@ -59,7 +59,7 @@ In the templates/users/logout.html template below, notice how we include the tag
 
 ## Modify project urls
 
-Now that the logout template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/logout, the logout template should pop up. Edit the transfer_project/urls.py file to include a new route for the logout template. We'll use Djangos build in ```django.contrib.auth.views.LogoutView``` as the view function. This view is very similar to to Django's built-in LoginView.
+Now that the logout template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/logout, the logout template should pop up. Edit the ```transfer_project/urls.py``` file to include a new route for the logout template. We'll use Djangos build in ```django.contrib.auth.views.LogoutView``` as the view function. This view is very similar to to Django's built-in LoginView.
 
 ```python
 # transfer_project/urls.py
@@ -92,7 +92,7 @@ The general structure to change the menu nav menu item depending on if a user is
 {% endif %}
 ```
 
-Let's add the ```user.is_authenticated``` functionality to the templates/nav.html template.
+Let's add the ```user.is_authenticated``` functionality to the ```templates/nav.html``` template.
 
 ```html
 <!-- templates/nav.html -->
@@ -138,8 +138,8 @@ Let's add the ```user.is_authenticated``` functionality to the templates/nav.htm
 
 Start the local server with:
 
-```
-(transfer) > python manage.py runserver
+```text
+(transfer)$ python manage.py runserver
 ```
 
 Browse to http://localhost:8000 and select the [Administrators] dropdown from the navigation bar at the top of the page. Click the [Login] link.
@@ -166,7 +166,7 @@ Neat.
 
 ## Show user logged in status in nav bar
 
-Now let's build a way to show users that they are logged in. Right now, you have to click the [Administrators] link and see if Login or Logout is an option. This is the only way for a user to tell if they are logged in or logged out. We also want to provide a way for users to see their username, modify their profile, change their password and see their 4-year university's dashboard. I think we can fit all of this into the nav bar using some templating logic, but it's a lot for one template. So let's break up the functionality into a couple templates. A chunck of html tags are rendered if the user is logged in and a chuck of html tags are rendered if the user is logged out. First modify the templates/nav.html template to include logic that shows different things in the nav bar depending on if a user is logged in or logged out. Note the ```{% include ' ' %}``` tag. These are the sections of html we need to write in different files. 
+Now let's build a way to show users that they are logged in. Right now, you have to click the [Administrators] link and see if Login or Logout is an option. This is the only way for a user to tell if they are logged in or logged out. We also want to provide a way for users to see their username, modify their profile, change their password and see their 4-year university's dashboard. I think we can fit all of this into the nav bar using some templating logic, but it's a lot for one template. So let's break up the functionality into a couple templates. A chunck of html tags are rendered if the user is logged in and a chuck of html tags are rendered if the user is logged out. First modify the ```templates/nav.html``` template to include logic that shows different things in the nav bar depending on if a user is logged in or logged out. Note the ```{% include ' ' %}``` tag. These are the sections of html we need to write in different files. 
 
 ```html
 <!-- templates/nav.html -->
@@ -209,7 +209,10 @@ Now let's build a way to show users that they are logged in. Right now, you have
 
 ```
 
-Now we need to build the two templates we just specified in the nav.html template: logged_in_nav.html and login_nav_button.html
+Now we need to build the two templates we just specified in the ```nav.html``` template:
+
+ * ```logged_in_nav.html``` and 
+ * ```login_nav_button.html```
 
 ```html
 <!-- templates/logged_in_nav_dropdown.html -->
@@ -246,7 +249,7 @@ Now the template that shows the login button (if the user is not logged in).
 OK. Coding for logging in and out is complete. Let's see the results. Run the local server and login and log out with the nav buttons.
 
 ```text
-(transfer) > python manage.py runserver
+(transfer)$ python manage.py runserver
 ``` 
 
 When the user is not logged in, the page looks like:
@@ -289,7 +292,7 @@ class LogoutPageTests(SimpleTestCase):
 Now let's run our tests and see if they all pass. At the Anaconda Prompt, type:
 
 ```text
-(transfer) > python manage.py test
+(transfer)$ python manage.py test
 ```
 
 ## Summary

@@ -23,13 +23,13 @@ This is the 6th part of a multi-part series on building a web app with Python an
 To help with the forms part of the login and logout pages, we'll use a Python package called django-crispy-forms. This package will help use build the login form and give some bootstrap4 styling to the form. We have bootstrap styling on the rest of the site on the home and about pages, so having bootstrap styling on the login page too helps keep the look of the site consistant. To install django-crispy-forms, we can use the Anaconda prompt and install from the conda-forge channel. Make sure to intall django-crisp-forms into the ```(transfer)``` virtual environment.
 
 ```text
-> conda activate transfer
-(transfer) > conda install -c conda-forge django-crispy-forms
+$ conda activate transfer
+(transfer)$ conda install -c conda-forge django-crispy-forms
 ```
 
 ### Add django-crispy-forms to the list of installed apps in settings.py
 
-Now that django-crispy-forms is installed, we need to include the package in our list of installed apps in transfer_project/settings.py.  We will also include ```CRISPY_TEMPLATE_PACK = 'bootstrap4'``` at the bottom of the setting.py file to notify the crispy forms app to use bootstrap4 styling.
+Now that django-crispy-forms is installed, we need to include the package in our list of installed apps in ```transfer_project/settings.py```.  We will also include ```CRISPY_TEMPLATE_PACK = 'bootstrap4'``` at the bottom of the ```setting.py``` file to notify the crispy forms app to use bootstrap4 styling.
 
 ```python
 # transfer_project/settings.py
@@ -63,7 +63,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ## Add a login template
 
-We need to build a login page so the Univeristy administrators can log in and out. First we'll build a login template. Let's put this tempate in the templates/users directory. The directory strucutre of the entire Django project is below:
+We need to build a login page so the Univeristy administrators can log in and out. First we'll build a login template. Let's put this tempate in the ```templates/users/``` directory. The directory strucutre of the entire Django project is below:
 
 ```text
 ├───pages
@@ -80,7 +80,7 @@ We need to build a login page so the Univeristy administrators can log in and ou
 └───users
 ```
 
-In the templates/users/login.html template below, notice how we include the tag ```{% load crispy_forms_tags %}```.  Within the body of the form, we also include the tag ```{{ form|crispy }}```.
+In the ```templates/users/login.html``` template below, notice how we include the tag ```{% load crispy_forms_tags %}```.  Within the body of the form, we also include the tag ```{{ form|crispy }}```.
 
 ```html
 <!-- templates/users/login.html -->
@@ -113,7 +113,9 @@ In the templates/users/login.html template below, notice how we include the tag 
 
 ## Modify project urls
 
-Now that the login template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/login, the login template should pop up. Edit the transfer_project/urls.py file to include a new route for the login template. We'll use Djangos build in ```django.contrib.auth.views.LoginView``` as the view function. Note the import line ```from django.contrib.auth import views as auth_views```. There are going to end up being a lot of functions in this urls.py file with the name ```views```, so we create the alias ```auth_views``` to prevent function name duplication.
+Now that the login template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/login, the login template should pop up. 
+
+Edit the ```transfer_project/urls.py``` file to include a new route for the login template. We'll use Djangos build in ```django.contrib.auth.views.LoginView``` as the view function. Note the import line ```from django.contrib.auth import views as auth_views```. There are going to end up being a lot of functions in this ```urls.py``` file with the name ```views```, so we create the alias ```auth_views``` to prevent function name duplication.
 
 ```python
 # transfer_project/urls.py
@@ -133,7 +135,7 @@ urlpatterns = [
 
 ## Modify the nav template to include the login url
 
-We have a login template, a login url and a login view. What we need now is a link on the site for users to click so they can find the login page. Let's put the login link as part of our navigation bar in the page header. We need to modify the nav.html template link the login page with the login menu button in the page nav. Note the tag: ```<a class="dropdown-item" href="{% url 'login' %}">Login</a>```. This tag provides the link to our login page.
+We have a login template, a login url and a login view. What we need now is a link on the site for users to click so they can find the login page. Let's put the login link as part of our navigation bar in the page header. We need to modify the ```nav.html``` template link the login page with the login menu button in the page nav. Note the tag: ```<a class="dropdown-item" href="{% url 'login' %}">Login</a>```. This tag provides the link to our login page.
 
 ```html
 <!-- templates/nav.html -->
@@ -176,7 +178,7 @@ We have a login template, a login url and a login view. What we need now is a li
 Start the local server with:
 
 ```text
-(transfer) > python manage.py runserver
+(transfer)$ python manage.py runserver
 ```
 
 Browse to http://localhost:8000 and select the [Administrators] dropdown from the navigation bar at the top of the page. Click the [Login] link.
@@ -187,7 +189,7 @@ The login page should look something like this:
 
 ![Login Page Login Link](images/home_page_login_menu.png)
 
-Login with the superuser username and password we created earlier.  Problem is, when we click [Login], we get a Page not found error. Django is trying to direct us to the accounts/profile url, but this page doesn't exist. For right now, let's direct users back to the homepage when they login. We can specify where users go after they login by specifying ```LOGIN_REDIRECT_URL = ``` in our transfer_project/settings.py file. At the bottom of the settings.py file, include the extra two lines at the bottom below the ```CRISPY_TEMPLATE_PACK``` line.
+Login with the superuser username and password we created earlier.  Problem is, when we click [Login], we get a Page not found error. Django is trying to direct us to the accounts/profile url, but this page doesn't exist. For right now, let's direct users back to the homepage when they login. We can specify where users go after they login by specifying ```LOGIN_REDIRECT_URL = ``` in our ```transfer_project/settings.py``` file. At the bottom of the ```transfer_project/settings.py``` file, include the extra two lines at the bottom below the ```CRISPY_TEMPLATE_PACK``` line.
 
 ```html
 # transfer_project/settings.py
@@ -252,7 +254,7 @@ class LoginPageTests(SimpleTestCase):
 Now let's run our tests and see if they all pass. At the Anaconda Prompt, type:
 
 ```text
-(transfer) > python manage.py test
+(transfer)$ python manage.py test
 ```
 
 Everything passes! Great. Another part of the Django project down.

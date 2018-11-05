@@ -58,7 +58,7 @@ There are a couple steps needed to get our user model working. We need to update
 
 ### Add user app to list of installed apps
 
-Now we'll add our user app to the list of installed apps. To do this, we need to edit the settings.py file in the overall transfer_project folder.
+Now we'll add our user app to the list of installed apps. To do this, we need to edit the settings.py file in the overall ```transfer_project/``` folder.
 
 ```python
 # transfer_project/settings.py
@@ -95,10 +95,10 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 ### Create the users model in the users app
 
-Now we need to create the users model in the users app.  Add a new ```CustomUser``` class derived from the ```AbstractUser``` base class in the users/models.py file
+Now we need to create the users model in the users app.  Add a new ```CustomUser``` class derived from the ```AbstractUser``` base class in the ```users/models.py``` file
 
 ```python
-# users/models.pyu
+# users/models.py
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -111,7 +111,7 @@ class CustomUser(AbstractUser):
 
 ## Create a users form in users/forms.py
 
-Now we need to create a form in the users app forms.py file. This form will allow new users to be created and exiting users to change.
+Now we need to create a form in the users app ```forms.py``` file. This form will allow new users to be created and exiting users to change.
 
 ```python
 # users/forms.py
@@ -137,7 +137,7 @@ class CustomUserChangeForm(UserChangeForm):
 
 ## Add user creation and user change forms to the Django admin
 
-In order to use the Django admin to add and modify users, we need to add our user creation form and add our user change form to the users/admin.py file.
+In order to use the Django admin to add and modify users, we need to add our user creation form and add our user change form to the ```users/admin.py``` file.
 
 ```python
 # users/admin.py
@@ -180,7 +180,7 @@ Running the command below didn't solve the problem.
 (transfer)$ python manage.py makemigrations --merge
 ```
 
-Commenting out the django.admin app from the list of installed apps didn't work either.
+Commenting out the ```'django.contrib.admin'``` app from the list of installed apps didn't work either.
 
 ```python
 # transfer_project/settings.py
@@ -190,9 +190,9 @@ Commenting out the django.admin app from the list of installed apps didn't work 
     'django.contrib.auth',
 ```
 
-I also tried deleting the  users.0001_initial.py file from the user app migrations folder. That worked for the makemigrations step, but it didn't work for the migrate step.
+I also tried deleting the ```users.0001_initial.py``` file from the user app migrations folder. That worked for the makemigrations step, but it didn't work for the migrate step.
 
-The thing that eventually worked was deleting the db.sqlite3 file in the base project directory and then running the commands again. 
+The thing that eventually worked was deleting the ```db.sqlite3``` file in the base project directory and then running the commands again. 
 
 ```text
 (transfer)$ python manage.py makemigrations users
@@ -241,7 +241,7 @@ Using the Django admin dashboard, create a new user by clicking the [+user] butt
 
 ## Modify the user app admin.py to include the fields 'job' and 'university'
 
-We can only see USERNAME, EMAIL ADDRESS, FIRST NAME, LAST NAME, and STAFF STATUS when we look at the Django admin pannel. Our custom fields 'university' and 'job' are not shown. To make these show up, we need to modify the /users/admin.py file and include a list_disply of all the fields we want shown.
+We can only see USERNAME, EMAIL ADDRESS, FIRST NAME, LAST NAME, and STAFF STATUS when we look at the Django admin pannel. Our custom fields 'university' and 'job' are not shown. To make these show up, we need to modify the ```users/admin.py``` file and include a ```list_display = [ ] ```of all the fields we want shown.
 
 ```python
 # users/admin.py
@@ -275,7 +275,7 @@ Browse to the user dashboard and see the new fields presented.
 
 ## Summary
 
-That was a ton of work, but we got the new user model working. We created the users app, added a user model to the users app and then incorporated the user model into the Django admin. Then we ran the Django admin and created a new user. Finally we modified the users/admin.py file so that we could see our custom fields 'university' and 'job' listed on the Django admin users pannel
+That was a ton of work, but we got the new user model working. We created the users app, added a user model to the users app and then incorporated the user model into the Django admin. Then we ran the Django admin and created a new user. Finally we modified the ```users/admin.py``` file so that we could see our custom fields ```'university'``` and ```'job'``` listed on the Django admin users pannel.
 
 ## Future Work
 

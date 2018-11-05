@@ -1,10 +1,10 @@
-# Welcome to the Oregon Transfer App Docs
+# Welcome to the Oregon Engineering Transfer App Docs
 
 <br>
 
-This documentation serves as a record of the creation of the Oregon Transfer App. 
+This documentation serves as a record of the creation of the Oregon Engineering Transfer App. 
 
-The Oregon Transfer app is a web app that shows how an Engineering class completed at an Oregon Community College can be transferred to an engineering class in an Oregon 4-year School.  Written in Django and Python.
+The Oregon Engineering Transfer app is a web app that shows how an Engineering class completed at an Oregon Community College can be transferred to an engineering class in an Oregon 4-year School.  Written in Django and Python.
 
 <br>
 
@@ -24,7 +24,7 @@ Or click the arrows at the bottom of each page.
 
 ## Goals
 
- * Web App is useful to student users that want to find transfer classes and useful to administrators that want to post transfer class equivalencies
+ * Web App is useful to student users who want to find transfer classes and useful to administrators who want to post transfer class equivalencies
 
  * User interface is easy to use and intuitive. Easy for students to select colleges and major and see transfer class equivalencies
 
@@ -57,3 +57,5 @@ Or click the arrows at the bottom of each page.
  ```
 
  [Ctrl]-[c] to exit.
+
+ 

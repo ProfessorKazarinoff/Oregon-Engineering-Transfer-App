@@ -1,0 +1,712 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+    
+    
+      
+        <title>Oregon Engineering College Transfer App - Part 5: User Model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#4caf50">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#what-is-a-user-model" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Oregon-Transfer-App-Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">build</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Oregon-Transfer-App-Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Oregon Engineering College Transfer App - Part 5: User Model
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Oregon-Transfer-App-Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon">build</i>
+      
+    </a>
+    Oregon-Transfer-App-Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to the Oregon Transfer App Docs" class="md-nav__link">
+      Welcome to the Oregon Transfer App Docs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part1_motivation/" title="Oregon Engineering College Transfer App - Part 1: Motivation" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 1: Motivation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part2_environment_setup/" title="Oregon Engineering College Transfer App - Part 2: Development Environment" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 2: Development Environment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part3_front_page_app/" title="Oregon Engineering College Transfer App - Part 3: Front Page App" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 3: Front Page App
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part4_about_page_and_bootstrap/" title="Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Oregon Engineering College Transfer App - Part 5: User Model" class="md-nav__link md-nav__link--active">
+      Oregon Engineering College Transfer App - Part 5: User Model
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part6_user_login/" title="Oregon Engineering College Transfer App - Part 6: User Login" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 6: User Login
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part7_user_logout/" title="Oregon Engineering College Transfer App - Part 7: User Logout" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 7: User Logout
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part8_user_profile/" title="Oregon Engineering College Transfer App - Part 8: User Profile" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 8: User Profile
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part9_classes_model/" title="Oregon Engineering College Transfer App - Part 9: Classes Model" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 9: Classes Model
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/edit/master/docs/part5_user_model.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <p>Summary: This is the fifth part of a multi-part series on building a web app with Python and Django. The web app will act as a resource for Engineering students at Oregon Community Colleges who want to transfer to 4-year Universities. The transfer web app will show which classes from their Community College Engineering program will transfer to which classes in a 4-year University Engineering program. In this fifth post, we'll build a user model that will allow us to add new users, allow users to login, and allow users to logout. We'll test this user model with the Django admin.</p>
+<div class="toc">
+<ul>
+<li><a href="#what-is-a-user-model">What is a user model?</a></li>
+<li><a href="#what-do-users-need-to-be-able-to-do">What do users need to be able to do?</a><ul>
+<li><a href="#transfer-app-site-privileges">Transfer App site privileges</a></li>
+<li><a href="#transfer-app-user-actions">Transfer App user actions</a></li>
+</ul>
+</li>
+<li><a href="#create-the-users-app">Create the users app</a></li>
+<li><a href="#create-a-user-model">Create a user model</a><ul>
+<li><a href="#add-user-app-to-list-of-installed-apps">Add user app to list of installed apps</a></li>
+<li><a href="#create-the-users-model-in-the-users-app">Create the users model in the users app</a></li>
+</ul>
+</li>
+<li><a href="#create-a-users-form-in-usersformspy">Create a users form in users/forms.py</a></li>
+<li><a href="#add-user-creation-and-user-change-forms-to-the-django-admin">Add user creation and user change forms to the Django admin</a></li>
+<li><a href="#make-migrations-and-migrate">Make migrations and migrate</a></li>
+<li><a href="#create-a-super-user-at-the-command-line">Create a super user at the command line</a></li>
+<li><a href="#start-the-local-server-and-log-into-the-django-admin">Start the local server and log into the Django Admin</a><ul>
+<li><a href="#create-users-with-the-django-admin">Create users with the django admin</a></li>
+<li><a href="#mondify-the-user-app-adminpy-to-include-the-fields-job-and-university">Mondify the user app admin.py to include the fields 'job' and 'university'</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#future-work">Future Work</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="what-is-a-user-model">What is a user model?</h2>
+<p>The Oregon Transfer App has two purposes. The first purpose is to be a website that Community College students can use to see which classes at their Community College transfer to a specific 4-year University in Oregon. The second purpose is to be a place where administrators at 4-year Universities can post transfer class equivalencies. The 4-year University administrators <em>set</em> which classes transfer, and the students <em>see</em> which classes transfer. We need to build a user model so that the 4-year university administrators can login, then build and modify transfer equavalencies. Students (or any other user) will not have to login to see which classes transfer. Students (or any other regular user) will not have the ability to <em>set</em> which classes transfer, just <em>see</em> which classes transfer. So a user model for the 4-year University administrators is needed.</p>
+<h2 id="what-do-users-need-to-be-able-to-do">What do users need to be able to do?</h2>
+<p>The 4-year University administrators need to be able to do a couple things:</p>
+<h3 id="transfer-app-site-privileges">Transfer App site privileges</h3>
+<ul>
+<li>log into the Transfer App website</li>
+<li>Create a new 4-year University</li>
+<li>Classes and edit classes at their 4-year University</li>
+<li>Create and edit classes at 2-year Community Colleges</li>
+<li>Create and edit which community College Classes are equivalent to which University classes</li>
+</ul>
+<h3 id="transfer-app-user-actions">Transfer App user actions</h3>
+<ul>
+<li>Create a new user, set username and password</li>
+<li>Log in</li>
+<li>Log out</li>
+<li>Reset password</li>
+<li>Retrieve forgetten password</li>
+<li>Maybe set and update a profile?</li>
+</ul>
+<p>We'll build some of these Transfer App user actions in this post.</p>
+<h2 id="create-the-users-app">Create the users app</h2>
+<p>At the Anaconda Prompt activate the <code>(transfer)</code> virtual environment and run the <code>startapp</code> command to create a new Django app in our Django project. We already have a <strong>pages</strong> app in our project. Now we need to add a <strong>users</strong> app to the project.</p>
+<pre><code class="text">&gt; cd tranfer_project
+# make sure you are in the project base directory
+&gt; conda activate transfer
+(transfer)&gt; python manage.py startapp users
+</code></pre>
+
+<h2 id="create-a-user-model">Create a user model</h2>
+<p>There are a couple steps needed to get our user model working. We need to update the project settings.py file so that our user app is included in the list of install apps. Then we'll create the user model in our users app.</p>
+<h3 id="add-user-app-to-list-of-installed-apps">Add user app to list of installed apps</h3>
+<p>Now we'll add our user app to the list of installed apps. To do this, we need to edit the settings.py file in the overall transfer_project folder.</p>
+<pre><code class="python"># transfer_project/settings.py
+
+# Application definition
+
+INSTALLED_APPS = [
+    # project specific
+    'pages.apps.PagesConfig',
+    'users.apps.UsersConfig',
+
+    # django
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # 3rd party
+
+]
+
+</code></pre>
+
+<p>Also define the <code>AUTH_USER_MODEL</code> in the same settings.py file</p>
+<pre><code class="python"># transfer_project/settings.py
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+</code></pre>
+
+<h3 id="create-the-users-model-in-the-users-app">Create the users model in the users app</h3>
+<p>Now we need to create the users model in the users app.  Add a new <code>CustomUser</code> class derived from the <code>AbstractUser</code> base class in the users/models.py file</p>
+<pre><code class="python"># users/models.pyu
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+class CustomUser(AbstractUser):
+    university = models.CharField(CharField.max_length=30, null='', blank=True)
+    job = models.CharField(CharField.max_length=30, null='', blank=True)
+
+</code></pre>
+
+<h2 id="create-a-users-form-in-usersformspy">Create a users form in users/forms.py</h2>
+<p>Now we need to create a form in the users app forms.py file. This form will allow new users to be created and exiting users to change.</p>
+<pre><code class="python"># users/forms.py
+
+from django import forms
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+from .models import CustomUser
+
+
+class CustomUserCreationForm(UserCreationForm):
+    model = CustomUser
+    fields = UserCreationForm.Meta.fields + ('university','job',)
+
+
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = CustomUser
+        fields = UserChangeForm.Meta.fields
+
+</code></pre>
+
+<h2 id="add-user-creation-and-user-change-forms-to-the-django-admin">Add user creation and user change forms to the Django admin</h2>
+<p>In order to use the Django admin to add and modify users, we need to add our user creation form and add our user change form to the users/admin.py file.</p>
+<pre><code class="python"># users/admin.py
+
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+
+from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .models import CustomUser
+
+
+class CustomUserAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = CustomUser
+
+
+admin.site.register(CustomUser,CustomUserAdmin)
+
+</code></pre>
+
+<h2 id="make-migrations-and-migrate">Make migrations and migrate</h2>
+<p>We made changes to the database, so before we start the local server and see if our user model works, we need to <code>makemigrations</code> and <code>migrate</code> the database changes.</p>
+<pre><code class="text">(transfer)&gt; python manage.py makemigrations users
+(transfer)&gt; python manage.py migrate
+</code></pre>
+
+<p>I had problems with this command and was returned the error</p>
+<pre><code class="text">django.db.migrations.exceptions.InconsistentMigrationHistory: Migration admin.0001_initial is applied before its dependency users.0001_initial on database 'default'
+</code></pre>
+
+<p>Running the command below didn't solve the problem.</p>
+<pre><code class="text">python manage.py makemigrations --merge
+</code></pre>
+
+<p>Commenting out the django.admin app from the list of installed apps didn't work either.</p>
+<pre><code class="python"># transfer_project/settings.py
+
+# django
+    #'django.contrib.admin',
+    'django.contrib.auth',
+</code></pre>
+
+<p>I also tried deleting the  users.0001_initial.py file from the user app migrations folder. That worked for the makemigrations step, but it didn't work for the migrate step.</p>
+<p>The thing that eventually worked was deleting the db.sqlite3 file in the base project directory and then running the commands again. </p>
+<pre><code class="text">(transfer)&gt; python manage.py makemigrations users
+(transfer)&gt; python manage.py migrate
+</code></pre>
+
+<p>Running makemigrations and migtrate created a new db.sqlite3 file and seems to work. Once users are created, this is obviously a poor solution. We don't want to erase the entire database each time we make a change to the app, but erasing the database worked to solve the problem right now. </p>
+<h2 id="create-a-super-user-at-the-command-line">Create a super user at the command line</h2>
+<p>We need to create a super user at the command line so that we can log into the Django admin. With no users set up yet, there is no way to log into the Django admin and see if our user model works.</p>
+<pre><code class="text">(transfer) &gt; python manage.py createsuperuser
+</code></pre>
+
+<p>You'll be asked for a username, email address and password. Note that the email address we use has to be different from the email address that will eventually be used with the email service.</p>
+<h1 id="start-the-local-server-and-log-into-the-django-admin">Start the local server and log into the Django Admin</h1>
+<p>Now let's see if our user model worked. Run the Django project locally with:</p>
+<pre><code class="text">(transfer)&gt; python manage.py runserver
+</code></pre>
+
+<p>Open up a web browser and browse to:</p>
+<blockquote>
+<p>http://localhost:8000/admin</p>
+</blockquote>
+<p>The Django admin looks something like below. Log in with the new superuser username and password that we just set up.</p>
+<p><img alt="Django admin login" src="images/djano_admin_login.png" /></p>
+<p>After logging in with the superuser credentials, the Django admin dashboard pops up.</p>
+<p><img alt="Django admin dashboard" src="../images/django_admin_dashboard.png" /></p>
+<h2 id="create-users-with-the-django-admin">Create users with the django admin</h2>
+<p>Using the Django admin dashboard, create a new user by clicking the [+user] button.</p>
+<p><img alt="Django admin create new user" src="{filename}/posts/transfer_app/django_admin_create_new_user" /></p>
+<h2 id="mondify-the-user-app-adminpy-to-include-the-fields-job-and-university">Mondify the user app admin.py to include the fields 'job' and 'university'</h2>
+<p>We can only see USERNAME, EMAIL ADDRESS, FIRST NAME, LAST NAME, and STAFF STATUS when we look at the Django admin pannel. Our custom fields 'university' and 'job' are not shown. To make these show up, we need to modify the /users/admin.py file and include a list_disply of all the fields we want shown.</p>
+<pre><code class="python"># users/admin.py
+
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+
+from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .models import CustomUser
+
+
+class CustomUserAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = CustomUser
+    list_display = ['username','email','university','job','is_staff']
+
+
+admin.site.register(CustomUser,CustomUserAdmin)
+</code></pre>
+
+<p>Restart the server with</p>
+<pre><code class="text">(transfer)&gt; python manage.py runserver
+</code></pre>
+
+<p>Browse to the user dashboard and see the new fields presented.</p>
+<p><img alt="django admin" src="{filename}\posts\transfer_app\images\django_admin_custom_fields_added.png" /></p>
+<h2 id="summary">Summary</h2>
+<p>That was a ton of work, but we got the new user model working. We created the users app, added a user model to the users app and then incorporated the user model into the Django admin. Then we ran the Django admin and created a new user. Finally we modified the users/admin.py file so that we could see our custom fields 'university' and 'job' listed on the Django admin users pannel</p>
+<h2 id="future-work">Future Work</h2>
+<p>Next, we'll incorporate a way for users to log in. We have the ability to create new users through the Django admin pannel. Now we need a way for those users to log in and out of the site. </p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../part4_about_page_and_bootstrap/" title="Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../part6_user_login/" title="Oregon Engineering College Transfer App - Part 6: User Login" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Oregon Engineering College Transfer App - Part 6: User Login
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Peter D. Kazarinoff
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.5e60981f.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

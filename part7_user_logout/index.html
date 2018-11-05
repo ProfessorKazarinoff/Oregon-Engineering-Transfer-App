@@ -1,0 +1,891 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+    
+    
+      
+        <title>Oregon Engineering College Transfer App - Part 7: User Logout</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#4caf50">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#why-do-users-need-to-be-able-to-logout" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Oregon-Transfer-App-Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">build</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Oregon-Transfer-App-Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Oregon Engineering College Transfer App - Part 7: User Logout
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Oregon-Transfer-App-Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon">build</i>
+      
+    </a>
+    Oregon-Transfer-App-Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to the Oregon Transfer App Docs" class="md-nav__link">
+      Welcome to the Oregon Transfer App Docs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part1_motivation/" title="Oregon Engineering College Transfer App - Part 1: Motivation" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 1: Motivation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part2_environment_setup/" title="Oregon Engineering College Transfer App - Part 2: Development Environment" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 2: Development Environment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part3_front_page_app/" title="Oregon Engineering College Transfer App - Part 3: Front Page App" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 3: Front Page App
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part4_about_page_and_bootstrap/" title="Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part5_user_model/" title="Oregon Engineering College Transfer App - Part 5: User Model" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 5: User Model
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part6_user_login/" title="Oregon Engineering College Transfer App - Part 6: User Login" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 6: User Login
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Oregon Engineering College Transfer App - Part 7: User Logout
+      </label>
+    
+    <a href="./" title="Oregon Engineering College Transfer App - Part 7: User Logout" class="md-nav__link md-nav__link--active">
+      Oregon Engineering College Transfer App - Part 7: User Logout
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Page Contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-users-need-to-be-able-to-logout" title="Why do users need to be able to logout?" class="md-nav__link">
+    Why do users need to be able to logout?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-logout-template" title="Create a logout template" class="md-nav__link">
+    Create a logout template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-project-urls" title="Modify project urls" class="md-nav__link">
+    Modify project urls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-the-nav-template-to-include-logout-functionality" title="Modify the nav template to include logout functionality" class="md-nav__link">
+    Modify the nav template to include logout functionality
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-local-server-and-login" title="Run the local server and login" class="md-nav__link">
+    Run the local server and login
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-user-logged-in-status-in-nav-bar" title="Show user logged in status in nav bar" class="md-nav__link">
+    Show user logged in status in nav bar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-local-server-to-see-the-results" title="Run the local server to see the results" class="md-nav__link">
+    Run the local server to see the results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-tests-for-logout-pages" title="Build tests for logout pages" class="md-nav__link">
+    Build tests for logout pages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" title="Future Work" class="md-nav__link">
+    Future Work
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part8_user_profile/" title="Oregon Engineering College Transfer App - Part 8: User Profile" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 8: User Profile
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part9_classes_model/" title="Oregon Engineering College Transfer App - Part 9: Classes Model" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 9: Classes Model
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Page Contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-users-need-to-be-able-to-logout" title="Why do users need to be able to logout?" class="md-nav__link">
+    Why do users need to be able to logout?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-logout-template" title="Create a logout template" class="md-nav__link">
+    Create a logout template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-project-urls" title="Modify project urls" class="md-nav__link">
+    Modify project urls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modify-the-nav-template-to-include-logout-functionality" title="Modify the nav template to include logout functionality" class="md-nav__link">
+    Modify the nav template to include logout functionality
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-local-server-and-login" title="Run the local server and login" class="md-nav__link">
+    Run the local server and login
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-user-logged-in-status-in-nav-bar" title="Show user logged in status in nav bar" class="md-nav__link">
+    Show user logged in status in nav bar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-local-server-to-see-the-results" title="Run the local server to see the results" class="md-nav__link">
+    Run the local server to see the results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-tests-for-logout-pages" title="Build tests for logout pages" class="md-nav__link">
+    Build tests for logout pages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" title="Future Work" class="md-nav__link">
+    Future Work
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/edit/master/docs/part7_user_logout.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Oregon Engineering College Transfer App - Part 7: User Logout</h1>
+                
+                <p>This is the 7th part of a multi-part series on building a web app with Python and Django. The web app will act as a resource for Engineering students at Oregon Community Colleges who want to transfer to 4-year Universities. The transfer web app will show which classes from their Community College Engineering program will transfer to which classes in a 4-year University Engineering program. In this seventh post, add a way for users to log out of the site. Will will also build a visual indicator into the navbar to show when a user is logged in, and give them a link in the nav bar that gives them an option to logout.</p>
+<div class="toc">
+<ul>
+<li><a href="#why-do-users-need-to-be-able-to-logout">Why do users need to be able to logout?</a></li>
+<li><a href="#create-a-logout-template">Create a logout template</a></li>
+<li><a href="#modify-project-urls">Modify project urls</a></li>
+<li><a href="#modify-the-nav-template-to-include-logout-functionality">Modify the nav template to include logout functionality</a></li>
+<li><a href="#run-the-local-server-and-login">Run the local server and login</a></li>
+<li><a href="#show-user-logged-in-status-in-nav-bar">Show user logged in status in nav bar</a></li>
+<li><a href="#run-the-local-server-to-see-the-results">Run the local server to see the results</a></li>
+<li><a href="#build-tests-for-logout-pages">Build tests for logout pages</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#future-work">Future Work</a></li>
+</ul>
+</div>
+<h2 id="why-do-users-need-to-be-able-to-logout">Why do users need to be able to logout?</h2>
+<p>4-year University administrators need to be able to log in and out of the site. The 4-year University administrators need to be able to log in so that they can post which classes at a Community College transfer to which classes at their 4-year University. Once the 4-year University Administrators make changes, they need to be able to log out and then act like regular site users (see the same view that students see) to see their changes in effect. It is also good security practice to allow users to logout before then exit the site.</p>
+<h2 id="create-a-logout-template">Create a logout template</h2>
+<p>We need to build a logout page so the Univeristy administrators can logout (after they login). To create the logout functionality, first we'll build a new logout.html template. Let's put the logout.html tempate in the templates/users directory. The directory strucutre of the entire Django project is below:</p>
+<pre><code class="text">├───pages
+│   ├───migrations
+│   │   └───__pycache__
+│   ├───static
+│   │   └───css
+│   └───__pycache__
+├───templates
+│   ├───registration
+│   └───users
+│        ├───login.html
+│        └───logout.html
+├───transfer_project
+│   └───__pycache__
+└───users
+</code></pre>
+
+<p>In the templates/users/logout.html template below, notice how we include the tag <code>{% url 'login' %}</code> so that users can back in again if they want to.</p>
+<pre><code class="html">&lt;!-- templates/users/logout.html --&gt;
+
+{% extends 'bootstrap_base.html' %}
+
+{% block content %}
+&lt;h2&gt;You have been logged out&lt;/h2&gt;
+    &lt;div class=&quot;border-top pt-3&quot;&gt;
+        &lt;small class=&quot;text-muted&quot;&gt;
+            &lt;a href=&quot;{% url 'login' %}&quot;&gt;Log In Again&lt;/a&gt;
+        &lt;/small&gt;
+    &lt;/div&gt;
+{% endblock content %}
+
+</code></pre>
+
+<h2 id="modify-project-urls">Modify project urls</h2>
+<p>Now that the logout template is created, we need to create a url pattern that points to the template. When a user browses to https://domain.com/logout, the logout template should pop up. Edit the transfer_project/urls.py file to include a new route for the logout template. We'll use Djangos build in <code>django.contrib.auth.views.LogoutView</code> as the view function. This view is very similar to to Django's built-in LoginView.</p>
+<pre><code class="python"># transfer_project/urls.py
+
+from django.contrib import admin
+from django.contrib.auth import views as auth_views
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+
+    path('', include('pages.urls')),
+]
+
+</code></pre>
+
+<h2 id="modify-the-nav-template-to-include-logout-functionality">Modify the nav template to include logout functionality</h2>
+<p>We have a logout template, a logout url and a logout view. What we need now is a link on the site for users to click so they can actually logout. Let's put the logout link as part of our navigation bar in the page header. We need to modify the nav.html template to accomplish this. Note the tag: <code>&lt;a class="dropdown-item" href="{% url 'login' %}"&gt;Login&lt;/a&gt;</code>. This tag provides the link to our login page. But when a user is logged in, we want the menu item to show <code>Logout</code>. Django has built in functionality to help with this. </p>
+<p>The general structure to change the menu nav menu item depending on if a user is logged in or out is below. Note the <code>user.is_authenticated</code> property. <code>user.is_authenticated</code> is built into Django. If a user is logged in, <code>user.is_authenticated</code> returns <code>True</code>. If a user is not logged in <code>user.is_authenticated</code> returns false.</p>
+<pre><code class="html">{% if user.is_authenticated %}
+&lt;code&gt;
+{% else %}
+&lt;code&gt;
+{% endif %}
+</code></pre>
+
+<p>Let's add the <code>user.is_authenticated</code> functionality to the templates/nav.html template.</p>
+<pre><code class="html">&lt;!-- templates/nav.html --&gt;
+
+&lt;nav class=&quot;navbar navbar-expand-md navbar-dark bg-dark fixed-top&quot;&gt;
+      &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;
+      &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarsExampleDefault&quot; aria-controls=&quot;navbarsExampleDefault&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+      &lt;/button&gt;
+
+      &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarsExampleDefault&quot;&gt;
+        &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;
+          &lt;li class=&quot;nav-item active&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;{% url 'home' %}&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;{% url 'about' %}&quot;&gt;About&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+            &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;https://example.com&quot; id=&quot;dropdown01&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Administrators&lt;/a&gt;
+            &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;dropdown01&quot;&gt;
+              {% if user.is_authenticated %}
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;{% url 'logout' %}&quot;&gt;Logout&lt;/a&gt;
+              {% else %}
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;{% url 'login' %}&quot;&gt;Login&lt;/a&gt;
+              {% endif %}
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;View Transfer Equivalencies&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Modify Transfer Equivalencies&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;form class=&quot;form-inline my-2 my-lg-0&quot;&gt;
+          &lt;input class=&quot;form-control mr-sm-2&quot; type=&quot;text&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot;&gt;
+          &lt;button class=&quot;btn btn-outline-success my-2 my-sm-0&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+
+</code></pre>
+
+<h2 id="run-the-local-server-and-login">Run the local server and login</h2>
+<p>Start the local server with:</p>
+<pre><code>(transfer) &gt; python manage.py runserver
+</code></pre>
+
+<p>Browse to http://localhost:8000 and select the [Administrators] dropdown from the navigation bar at the top of the page. Click the [Login] link.</p>
+<p><img alt="Home Page Login Link" src="../images/home_page_login_menu.png" /></p>
+<p>The login page should look something like this:</p>
+<p><img alt="Login Page Login Link" src="../images/login_page.png" /></p>
+<p>Login with the superuser username and password we created earlier.  After we login, we are directed back to the homepage. Now that we are logged in, if we click the [Administrators] nav menu item, we see an option to logout (where as before we saw an option to login). Cool!</p>
+<p><img alt="Home Page Logout Link" src="../images/home_page_logout_menu.png" /></p>
+<p>If we click [Logout], we are directed to the logout page:</p>
+<p><img alt="Logout Page" src="../images/logout_page.png" /></p>
+<p>If we click the [Log in Again] link, we are directed back to the login page</p>
+<p><img alt="Login Page" src="../images/login_page.png" /></p>
+<p>Neat.</p>
+<h2 id="show-user-logged-in-status-in-nav-bar">Show user logged in status in nav bar</h2>
+<p>Now let's build a way to show users that they are logged in. Right now, you have to click the [Administrators] link and see if Login or Logout is an option. This is the only way for a user to tell if they are logged in or logged out. We also want to provide a way for users to see their username, modify their profile, change their password and see their 4-year university's dashboard. I think we can fit all of this into the nav bar using some templating logic, but it's a lot for one template. So let's break up the functionality into a couple templates. A chunck of html tags are rendered if the user is logged in and a chuck of html tags are rendered if the user is logged out. First modify the templates/nav.html template to include logic that shows different things in the nav bar depending on if a user is logged in or logged out. Note the <code>{% include ' ' %}</code> tag. These are the sections of html we need to write in different files. </p>
+<pre><code class="html">&lt;!-- templates/nav.html --&gt;
+
+&lt;nav class=&quot;navbar navbar-expand-md navbar-dark bg-dark fixed-top&quot;&gt;
+      &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;
+      &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarsExampleDefault&quot; aria-controls=&quot;navbarsExampleDefault&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+      &lt;/button&gt;
+
+      &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarsExampleDefault&quot;&gt;
+        &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;
+          &lt;li class=&quot;nav-item active&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;{% url 'home' %}&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;{% url 'about' %}&quot;&gt;About&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+            &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;https://example.com&quot; id=&quot;dropdown01&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Administrators&lt;/a&gt;
+            &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;dropdown01&quot;&gt;
+              {% if user.is_authenticated %}
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;{% url 'logout' %}&quot;&gt;Logout&lt;/a&gt;
+              {% else %}
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;{% url 'login' %}&quot;&gt;Login&lt;/a&gt;
+              {% endif %}
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;View Transfer Equivalencies&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Modify Transfer Equivalencies&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      {% if user.is_authenticated %}
+        {% include 'logged_in_nav_dropdown.html' %}
+      {% else %}
+        {% include 'login_nav_button.html' %}
+      {% endif %}
+
+      &lt;/div&gt;
+    &lt;/nav&gt;
+
+</code></pre>
+
+<p>Now we need to build the two templates we just specified in the nav.html template: logged_in_nav.html and login_nav_button.html</p>
+<pre><code class="html">&lt;!-- templates/logged_in_nav_dropdown.html --&gt;
+
+&lt;ul class=&quot;nav justify-content-end&quot;&gt;
+    &lt;li class=&quot;nav-item dropdown&quot;&gt;
+        &lt;a class=&quot;btn btn-secondary dropdown-toggle&quot; href=&quot;https://example.com&quot; id=&quot;dropdown01&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt; Logged in as: {{ user.username }}&lt;/a&gt;
+        &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;dropdown01&quot;&gt;
+            &lt;a class=&quot;dropdown-item&quot; href=&quot;{% url 'logout' %}&quot;&gt;Logout&lt;/a&gt;
+            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Administrator Dashboard&lt;/a&gt;
+            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Profile&lt;/a&gt;
+            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Change Password&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+</code></pre>
+
+<p>Now the template that shows the login button (if the user is not logged in).</p>
+<pre><code class="html">&lt;!-- templates/login_nav_button.html --&gt;
+
+&lt;ul class=&quot;navbar-nav justify-content-end&quot;&gt;
+    &lt;li class=&quot;nav-item active&quot;&gt;
+        &lt;a class=&quot;btn btn-secondary&quot; href=&quot;{%  url 'login' %}&quot;&gt;Login&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+</code></pre>
+
+<h2 id="run-the-local-server-to-see-the-results">Run the local server to see the results</h2>
+<p>OK. Coding for logging in and out is complete. Let's see the results. Run the local server and login and log out with the nav buttons.</p>
+<pre><code class="text">(transfer) &gt; python manage.py runserver
+</code></pre>
+
+<p>When the user is not logged in, the page looks like:</p>
+<p><img alt="Logout Page" src="../images/login_page.png" /></p>
+<p>If we click the [Login] button on the upper right, we are brought to the login screen</p>
+<p><img alt="Login Page" src="../images/login_page.png" /></p>
+<p>After we log in, we are taken back to the homepage, but now the menu in the upper right shows our user name and has some additional options.</p>
+<p><img alt="Home Page Logged in as Peter" src="../images/home_page_logged_in_as_peter.png" /></p>
+<p>If will click [logout] from the drop down menu, we are brought back to log out screen and the button in the upper right has gone back to a login button. Awesome!</p>
+<p><img alt="Home Page Logged in as Peter" src="../images/logout_page_showing_login_button.png" /></p>
+<h2 id="build-tests-for-logout-pages">Build tests for logout pages</h2>
+<p>Since we have a new page, we need to write some new tests. We already have a couple tests. There is a test for the homepage, about page and login page. We can improve our test coverage by adding tests for the logout page.</p>
+<pre><code class="python"># pages/tests.py
+
+...
+
+class LogoutPageTests(SimpleTestCase):
+        def test_logout_page_status_code(self):
+        response = self.client.get('/logout/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_about_view_uses_correct_template(self):
+        response = self.client.get(reverse('logout')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, '/users/logout.html')
+
+</code></pre>
+
+<p>Now let's run our tests and see if they all pass. At the Anaconda Prompt, type:</p>
+<pre><code class="text">(transfer) &gt; python manage.py test
+</code></pre>
+
+<h2 id="summary">Summary</h2>
+<p>In this post we created a logout template and and view. We changed the functionality of the nav bar to show different items depending on if we are logged out or logged in. We see a login button if we are logged out, and we see our username with a drop down menu if we are logged in.</p>
+<h2 id="future-work">Future Work</h2>
+<p>Next, we'll build a profile page for users to specify and modify their user profile. Things we want to include on the profile page are username, email, university and job. We want to provide a way for the user to change and modify these options.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../part6_user_login/" title="Oregon Engineering College Transfer App - Part 6: User Login" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Oregon Engineering College Transfer App - Part 6: User Login
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../part8_user_profile/" title="Oregon Engineering College Transfer App - Part 8: User Profile" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Oregon Engineering College Transfer App - Part 8: User Profile
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Peter D. Kazarinoff
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.5e60981f.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

@@ -1,0 +1,973 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
+    
+    
+      
+        <title>Oregon Engineering College Transfer App - Part 9: Classes Model</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#4caf50">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#why-a-classes-model" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Oregon-Transfer-App-Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">build</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Oregon-Transfer-App-Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Oregon Engineering College Transfer App - Part 9: Classes Model
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Oregon-Transfer-App-Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon">build</i>
+      
+    </a>
+    Oregon-Transfer-App-Docs
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to the Oregon Transfer App Docs" class="md-nav__link">
+      Welcome to the Oregon Transfer App Docs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part1_motivation/" title="Oregon Engineering College Transfer App - Part 1: Motivation" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 1: Motivation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part2_environment_setup/" title="Oregon Engineering College Transfer App - Part 2: Development Environment" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 2: Development Environment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part3_front_page_app/" title="Oregon Engineering College Transfer App - Part 3: Front Page App" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 3: Front Page App
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part4_about_page_and_bootstrap/" title="Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 4: About Page and Bootstrap
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part5_user_model/" title="Oregon Engineering College Transfer App - Part 5: User Model" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 5: User Model
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part6_user_login/" title="Oregon Engineering College Transfer App - Part 6: User Login" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 6: User Login
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part7_user_logout/" title="Oregon Engineering College Transfer App - Part 7: User Logout" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 7: User Logout
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../part8_user_profile/" title="Oregon Engineering College Transfer App - Part 8: User Profile" class="md-nav__link">
+      Oregon Engineering College Transfer App - Part 8: User Profile
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Oregon Engineering College Transfer App - Part 9: Classes Model
+      </label>
+    
+    <a href="./" title="Oregon Engineering College Transfer App - Part 9: Classes Model" class="md-nav__link md-nav__link--active">
+      Oregon Engineering College Transfer App - Part 9: Classes Model
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Page Contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-a-classes-model" title="Why a classes model?" class="md-nav__link">
+    Why a classes model?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-app" title="Create a courses app" class="md-nav__link">
+    Create a courses app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-courses-model" title="Create the courses model" class="md-nav__link">
+    Create the courses model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrate-new-courses-model-to-the-database" title="Migrate new courses model to the database" class="md-nav__link">
+    Migrate new courses model to the database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-courses-model-to-the-django-admin-and-test" title="Add courses model to the Django admin and test" class="md-nav__link">
+    Add courses model to the Django admin and test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-url" title="Create a courses URL" class="md-nav__link">
+    Create a courses URL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-courses-url-to-the-project-urls" title="Add a courses URL to the project urls" class="md-nav__link">
+    Add a courses URL to the project urls
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-view" title="Create a courses View" class="md-nav__link">
+    Create a courses View
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-template" title="Create a courses template" class="md-nav__link">
+    Create a courses template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-local-server-to-see-the-results" title="Run the local server to see the results" class="md-nav__link">
+    Run the local server to see the results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-tests-for-courses-page" title="Build tests for courses page" class="md-nav__link">
+    Build tests for courses page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" title="Future Work" class="md-nav__link">
+    Future Work
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Page Contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-a-classes-model" title="Why a classes model?" class="md-nav__link">
+    Why a classes model?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-app" title="Create a courses app" class="md-nav__link">
+    Create a courses app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-courses-model" title="Create the courses model" class="md-nav__link">
+    Create the courses model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrate-new-courses-model-to-the-database" title="Migrate new courses model to the database" class="md-nav__link">
+    Migrate new courses model to the database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-courses-model-to-the-django-admin-and-test" title="Add courses model to the Django admin and test" class="md-nav__link">
+    Add courses model to the Django admin and test
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-url" title="Create a courses URL" class="md-nav__link">
+    Create a courses URL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-courses-url-to-the-project-urls" title="Add a courses URL to the project urls" class="md-nav__link">
+    Add a courses URL to the project urls
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-view" title="Create a courses View" class="md-nav__link">
+    Create a courses View
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-courses-template" title="Create a courses template" class="md-nav__link">
+    Create a courses template
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-local-server-to-see-the-results" title="Run the local server to see the results" class="md-nav__link">
+    Run the local server to see the results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-tests-for-courses-page" title="Build tests for courses page" class="md-nav__link">
+    Build tests for courses page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" title="Future Work" class="md-nav__link">
+    Future Work
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ProfessorKazarinoff/oregon-transfer-app/edit/master/docs/part9_classes_model.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Oregon Engineering College Transfer App - Part 9: Classes Model</h1>
+                
+                <p>This is the 9th part of a multi-part series on building a web app with Python and Django. The web app will act as a resource for Engineering students at Oregon Community Colleges who want to transfer to 4-year Universities. The transfer web app will show which classes from their Community College Engineering program will transfer to which classes in a 4-year University Engineering program. In this nineth post, we'll create a new classes model and create a page where 4-year University Administrators can add classes to the site.</p>
+<div class="toc">
+<ul>
+<li><a href="#why-a-classes-model">Why a classes model?</a></li>
+<li><a href="#create-a-courses-app">Create a courses app</a></li>
+<li><a href="#create-the-courses-model">Create the courses model</a></li>
+<li><a href="#migrate-new-courses-model-to-the-database">Migrate new courses model to the database</a></li>
+<li><a href="#add-courses-model-to-the-django-admin-and-test">Add courses model to the Django admin and test</a></li>
+<li><a href="#create-a-courses-url">Create a courses URL</a><ul>
+<li><a href="#add-a-courses-url-to-the-project-urls">Add a courses URL to the project urls</a></li>
+</ul>
+</li>
+<li><a href="#create-a-courses-view">Create a courses View</a></li>
+<li><a href="#create-a-courses-template">Create a courses template</a></li>
+<li><a href="#run-the-local-server-to-see-the-results">Run the local server to see the results</a></li>
+<li><a href="#build-tests-for-courses-page">Build tests for courses page</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#future-work">Future Work</a></li>
+</ul>
+</div>
+<h2 id="why-a-classes-model">Why a classes model?</h2>
+<p>The purpose of the Oregon Transfer App is to have a website that students can visit to see which classes transfer from Community College Engineering programs to 4-year University Engineering Programs. The classes at the 4-year Universities has to be part of the site. We need to add a way for 4-year University administrators to add, modify and delete classes taught at their University.</p>
+<h2 id="create-a-courses-app">Create a courses app</h2>
+<p>We need to build a courses app to contain our courses model. New Django apps, which are the components that make up Django projects are created with the <code>manange.py startapp</code> command. </p>
+<pre><code class="text">$ conda activate transfer
+(transfer) $ python manage.py startapp courses
+</code></pre>
+
+<p>Now we need to add the new courses app to the list of installed apps in our Django project</p>
+<pre><code class="python"># transfer_project/settings.py
+
+INSTALLED_APPS = [
+    # project specific
+    &quot;pages.apps.PagesConfig&quot;,
+    &quot;users.apps.UsersConfig&quot;,
+    &quot;courses.apps.CoursesConfig&quot;,
+    # 3rd party
+    &quot;crispy_forms&quot;,
+    # django
+    &quot;django.contrib.admin&quot;,
+    &quot;django.contrib.auth&quot;,
+    &quot;django.contrib.contenttypes&quot;,
+    &quot;django.contrib.sessions&quot;,
+    &quot;django.contrib.messages&quot;,
+    &quot;django.contrib.staticfiles&quot;,
+]
+</code></pre>
+
+<p>We'll also add a time zone to the project settings so we can mark a time when each new course is added to the website.</p>
+<pre><code class="python"># transfer_project/settings.py
+
+# Internationalization
+# https://docs.djangoproject.com/en/2.1/topics/i18n/
+
+LANGUAGE_CODE = &quot;en-us&quot;
+
+TIME_ZONE = &quot;America/Los_Angeles&quot;
+</code></pre>
+
+<h2 id="create-the-courses-model">Create the courses model</h2>
+<p>Now we need to create the courses model. This is defined within the courses app in the models.py file. Each class has a couple specific properties that we want to keep track of:</p>
+<ul>
+<li>
+<p>Course number: Example ENGR114</p>
+</li>
+<li>
+<p>Course name: Example Engineering Programming</p>
+</li>
+<li>
+<p>Credits: Example 4</p>
+</li>
+<li>
+<p>Course description: Example A 2nd year engineeirng course for students to learn computer programing to solve engineering problems</p>
+</li>
+<li>
+<p>University name: Example PSU</p>
+</li>
+<li>
+<p>Department name: Example ECS</p>
+</li>
+<li>
+<p>Prereqs: Example ENGR101 and ENGR112</p>
+</li>
+<li>
+<p>Course outcomes: Example 1. Demonstrate ability to use vectors</p>
+</li>
+<li>
+<p>Course page URL: Example https://pdx.edu/ECE112.html</p>
+</li>
+<li>
+<p>Date added: Example Oct 24, 2018</p>
+</li>
+<li>
+<p>Added by: Example Kendra Lowry</p>
+</li>
+<li>
+<p>Possibly others?</p>
+</li>
+</ul>
+<pre><code class="python"># courses/models.py
+
+from django.db import models
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.db import models
+from django.urls import reverse
+
+
+class Course(models.Model):
+    course_number = models.CharField(max_length=10)
+    course_name = models.CharField(max_length=50)
+    college = models.CharField(max_length=30)
+    department = models.CharField(max_length=100)
+    pre_reqs = models.CharField(max_length=50)
+    course_description = models.TextField()
+    course_outcomes = models.TextField()
+    course_URL = models.URLField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    added_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.course_number} {self.course_name} {self.college}'
+
+    def get_absolute_url(self):
+        return reverse('course_detail', args=[str(self.id)])
+
+</code></pre>
+
+<h2 id="migrate-new-courses-model-to-the-database">Migrate new courses model to the database</h2>
+<p>Now that the courses model is added, we need to migrate the model to the database.</p>
+<pre><code class="text">(transfer) $ python manage.py makemigrations courses
+(transfer) $ python manage.py migrate
+</code></pre>
+
+<h2 id="add-courses-model-to-the-django-admin-and-test">Add courses model to the Django admin and test</h2>
+<p>Now let's add our courses model to the Django admin so that we can test it's functionality.</p>
+<pre><code class="python"># courses/admin.py
+
+from django.contrib import admin
+
+from .models import Course
+
+
+admin.site.register(Course)
+</code></pre>
+
+<p>Start the development server and bring up the Django admin.</p>
+<pre><code class="text">(transfer) $ python manage.py runserver
+</code></pre>
+
+<p>browse to:</p>
+<blockquote>
+<p>localhost:8000/admin</p>
+</blockquote>
+<p>Login with the superuser account</p>
+<p><img alt="Django Admin Login" src="../images/django_admin_login.png" /></p>
+<p>Add a new course with the [+] button</p>
+<p><img alt="Django Admin add course" src="../images/django_admin_add_course.png" /></p>
+<p>Add course details</p>
+<p><img alt="Django Admin add course details" src="../images/django_admin_add_course_details.png" /></p>
+<p><img alt="Django Admin add course details" src="../images/django_admin_save_course_details.png" /></p>
+<p>Afer we save the course, we can see the course in the list of courses on the Django admin pannel. We can see the course number, course name and college as we specificed in the courses model</p>
+<p><img alt="Django Admin add course details" src="../images/django_admin_add_course_details.png" /></p>
+<p>Now that the courses model is running and we have a course added, let's add one more course through the Django admin. With two courses added we will be able to see what a course page looks like with more than one course and how we can iterated over the courses to build the courses page. Up next is creating a url route so we have a destination for our course page.</p>
+<h2 id="create-a-courses-url">Create a courses URL</h2>
+<p>We want to create a url for our courses page. This needs to be accomplished in two steps. First we need to add a url to the over-all project urls, second we need to add a url to the courses app urls</p>
+<h3 id="add-a-courses-url-to-the-project-urls">Add a courses URL to the project urls</h3>
+<p>We'll add the sub-url <code>/courses</code> to proceed any url's that display course pages. In the project url's, we'll add a url route to go to our courses app url's</p>
+<pre><code class="python"># transfer_project/urls.py
+
+from django.contrib import admin
+from django.contrib.auth import views as auth_views
+from django.urls import path, include
+
+urlpatterns = [
+    path(&quot;admin/&quot;, admin.site.urls),
+    path(
+        &quot;login/&quot;,
+        auth_views.LoginView.as_view(template_name=&quot;users/login.html&quot;),
+        name=&quot;login&quot;,
+    ),
+    path(
+        &quot;logout/&quot;,
+        auth_views.LogoutView.as_view(template_name=&quot;users/logout.html&quot;),
+        name=&quot;logout&quot;,
+    ),
+    path('courses/', include('courses.urls')),
+    path(&quot;&quot;, include(&quot;pages.urls&quot;)),
+]
+
+</code></pre>
+
+<p>Any url that starts with <code>/courses</code> is now routed to the courses app urls. So now we need to modify the courses app urls. Create a new url.py file in the courses app directory.</p>
+<pre><code class="python"># courses/urls.py
+
+from django.urls import path
+
+from .views import CourseListView
+
+urlpatterns = [
+    path('', CourseListView.as_view(), name='course_list'),
+]
+</code></pre>
+
+<p>We named the <code>CourseListView</code> as the view called when the <code>/courses</code> url is requested. This view needs to be constructed.</p>
+<h2 id="create-a-courses-view">Create a courses View</h2>
+<p>To create the <code>CourseListView</code>, we'll create a custom class-based view from Django's generic <code>ListView</code> class. We'll assign the view to use the course_list.html template, which we'll put in the tempates/courses directory</p>
+<pre><code class="python"># courses/views.py
+
+from django.shortcuts import render
+from django.views.generic import ListView
+
+from .models import Course
+
+
+class CourseListView(ListView):
+    model = Course
+    template_name = 'courses/course_list.html'
+
+</code></pre>
+
+<h2 id="create-a-courses-template">Create a courses template</h2>
+<p>Our course list view is pointing to the template <code>ourses/course_list.html</code> so that's the template we'll construct next. We'll use bootstrap cards for each course in the template. Django's generic ListView class provides an object called object_list. Since our CourseListView is daughter class of the ListView class, our CourseListView also provides an object called object_list. When we iterate over object_list, we'll iterate over the two courses we created in the Django admin.</p>
+<pre><code class="html">&lt;!-- templates/courses/course_list.html --&gt;
+
+{% extends 'bootstrap_base.html' %}
+
+{% block content %}
+
+    &lt;div class=&quot;card-deck&quot;&gt;
+    {% for course in object_list %}
+        &lt;div class=&quot;card text-white bg-info mb-3&quot; style=&quot;max-width: 18rem;&quot;&gt;
+            &lt;div class=&quot;card-header&quot;&gt; {{ course.college }}&lt;/div&gt;
+            &lt;div class=&quot;card-body&quot;&gt;
+                &lt;h5 class=&quot;card-title&quot;&gt;{{ course.course_number }} {{ course.course_name }}&lt;/h5&gt;
+                &lt;p class=&quot;card-text&quot;&gt;{{ course.course_description }}&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;card-footer bg-transparent text-center text-muted text-white-50&quot;&gt;
+                &lt;a href=&quot;#&quot; class=&quot;badge badge-secondary&quot;&gt;Edit&lt;/a&gt; | &lt;a href=&quot;#&quot; class=&quot;badge badge-secondary&quot;&gt;Delete&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    {% endfor %}
+    &lt;/div&gt;
+
+{% endblock content %}
+
+</code></pre>
+
+<h2 id="run-the-local-server-to-see-the-results">Run the local server to see the results</h2>
+<p>OK. We should be able to see the course page list now. Let's run the local server and browse to the /courses page.</p>
+<pre><code class="text">(transfer) &gt; python manage.py runserver
+</code></pre>
+
+<blockquote>
+<p>localhost:8000/courses</p>
+</blockquote>
+<p><img alt="courses list page" src="../images/courses_list_page.png" /></p>
+<p>It works! We see the two courses we added to the Django admin.</p>
+<h2 id="build-tests-for-courses-page">Build tests for courses page</h2>
+<p>Since we have a courses list page, we need to write a new test. We already have a couple tests. We can continue to improve our test coverage by adding tests for the new courses list page.</p>
+<pre><code class="python"># courses/tests.py
+
+...
+
+class CoursesListPageTests(TestCase):
+        def test_courses_list_page_status_code(self):
+        response = self.client.get('/courses/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_courses_view_uses_correct_template(self):
+        response = self.client.get(reverse('/courses/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, '/courses/course_list.html')
+
+</code></pre>
+
+<p>Now let's run our tests and see if they all pass. At the Anaconda Prompt, type:</p>
+<pre><code class="text">(transfer) &gt; python manage.py test
+</code></pre>
+
+<p>The tests passed! Now our Django app has a working profile page.</p>
+<h2 id="summary">Summary</h2>
+<p>In this post we created a courses model and added a course using the Django admin. Then we built a set of url patterns and views for the courses pages. We built a couple templates to display our courses. Finally we constructed and ran some tests on our course pages.</p>
+<h2 id="future-work">Future Work</h2>
+<p>Next, we'll build some authorization into the courses pages so that only 4-year University Administrators can add classes and access the course pages for their University. We also need to build in functionality for courses to be added using the site, instead of courses added using the Django admin.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../part8_user_profile/" title="Oregon Engineering College Transfer App - Part 8: User Profile" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Oregon Engineering College Transfer App - Part 8: User Profile
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Peter D. Kazarinoff
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.5e60981f.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

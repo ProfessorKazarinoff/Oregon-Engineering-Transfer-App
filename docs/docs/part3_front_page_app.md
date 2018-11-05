@@ -66,7 +66,6 @@ from django.urls import path
 from .views import HomePageView, AboutPageView
 
 urlpatterns = [
-    path("about/", AboutPageView.as_view(), name="about"),
     path("", HomePageView.as_view(), name="home"),
 ]
 ```
@@ -109,7 +108,7 @@ In this step of developing the Oregon Engineering Transfer App project we added 
 
  * ```transfer_project/settings.py``` - added the ```Pages``` app
  * ```pages/views.py``` - added a pages view function
- * ```pages/urls.py``` - added a home and an about page url route 
+ * ```pages/urls.py``` - added a home page url route 
  * ```transfer_project/urls.py``` - added a url route to point to the ```Pages``` url routes
 
  Finally we ran the server locally using ```manage.py runserver``` to view the additions we made.

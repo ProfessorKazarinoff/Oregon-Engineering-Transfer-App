@@ -296,18 +296,12 @@
     An operating system
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-a-new-virtual-environment" title="Create a new virtual environment" class="md-nav__link">
     Create a new virtual environment
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -459,18 +453,12 @@
     An operating system
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-a-new-virtual-environment" title="Create a new virtual environment" class="md-nav__link">
     Create a new virtual environment
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -555,7 +543,7 @@
 <p>Download the latest release at:</p>
 <p><a href="https://www.anaconda.com/download/">https://www.anaconda.com/download</a></p>
 <p>The Anaconda distribution of Python comes with an up-to-date and stable version of Python (Python 3.6, byt Python 3.7 can be specified during the creation of a virtual environment) and the <strong>Anaconda Prompt</strong>. The <strong>Anaconda Prompt</strong> is useful because it allows me to run shell commands on my Windows 10 machines. These are the same commands I would run in the terminal on my MacOS or Linux boxes. The <strong>Anaconda Prompt</strong> makes creating and activiting virtual environments easy and allows me to use git on Windows 10. Follow this post to <a href="https://pythonforundergradengineers.com/installing-anaconda-on-windows.html">install the Anaconda on Windows 10.</a></p>
-<h3 id="create-a-new-virtual-environment">Create a new virtual environment</h3>
+<h2 id="create-a-new-virtual-environment">Create a new virtual environment</h2>
 <p>Before installing Django, we should create a new virtual environment. The same virtual environment on each of the computers I use means the same packages are installed on each computer. To create a new virtual environment, open up the Anaconda Prompt (on Windows) or a terminal (on Linux or Mac OSX). Let's call our new virtual environment <code>transfer</code>. The <code>conda create</code> command creates the environment and the <code>-n staticsite</code> flag adds the name. <code>python=3.7</code> sets the Python version at 3.7.</p>
 <pre><code class="text">$ conda create -n transfer python=3.7
 </code></pre>
@@ -566,7 +554,7 @@
 
 <p>Now  we see <code>(transfer)</code> before the terminal prompt. This means we are using the <code>(transfer)</code> virtual environment.</p>
 <h2 id="install-django">Install Django</h2>
-<p>Time for some fun! Installing Django. Django mature web framework built in Python. Django is included in the default Anaconda channel. The install command is:</p>
+<p>Time for some fun! Installing Django. Django is a mature web framework built in Python. Django is included in the default Anaconda channel. The install command is:</p>
 <pre><code class="text">(transfer)$ conda install django
 </code></pre>
 

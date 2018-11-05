@@ -535,10 +535,13 @@
                 
                 <p>This is the third part of a multi-part series on building a web app with Python and Django. The web app will act as a resource for Engineering students at Oregon Community Colleges that want to transfer to 4-year Universities. The transfer web app will show which classes from their community college engineering program will transfer to which classes in a 4-year University engineering program. In this third post, I'll review building the first pages app. The first app to add to the django project. This includes creating the app at the command line, adding the app to the project, creating a view, and creating a urlpattern. Then we'll run the server locally and see if the pages app works.</p>
 <h2 id="django-apps">Django Apps</h2>
-<p>What is a django app and how is it different from a django project? A djano app is part of a django project. One django project can have many apps.</p>
+<p>What is a Django app and how is it different from a Django project? A djano app is part of a Django project. One Django project can have many apps.</p>
 <h2 id="create-the-pages-app">Create the pages app</h2>
+<p>To show our front page and about page, we are going to create a pages app in our Django project.</p>
 <h2 id="add-the-pages-app-to-the-list-of-installed-apps">Add the pages app to the list of installed apps</h2>
-<pre><code class="python"># Application definition
+<pre><code class="python"># transfer_project/settings.py
+
+# Application definition
 
 INSTALLED_APPS = [
     # django
@@ -556,17 +559,62 @@ INSTALLED_APPS = [
 </code></pre>
 
 <h2 id="define-a-homepage-view">Define a homepage view</h2>
-<p>in pages/views.py</p>
-<pre><code class="python">from django.http import HttpResponse
+<p>In <code>pages/views.py</code> add the following code:</p>
+<pre><code class="python"># pages/views.py
+
+from django.http import HttpResponse
 
 def homePageView(request):
     return HttpResponse('College Transfer App')
 </code></pre>
 
 <h2 id="configure-the-homepage-url-pattern-in-the-pages-app">Configure the homepage URL pattern in the pages app</h2>
+<p>In <code>pages/urls.py</code> add the following code:</p>
+<pre><code class="python"># pages/urls.py
+
+from django.urls import path
+from .views import HomePageView, AboutPageView
+
+urlpatterns = [
+    path(&quot;&quot;, HomePageView.as_view(), name=&quot;home&quot;),
+]
+</code></pre>
+
 <h2 id="configure-the-homepage-url-pattern-in-the-overall-transfer-project">Configure the homepage URL pattern in the overall transfer project</h2>
+<p>In <code>transfer_project/urls.py</code> add the following code:</p>
+<pre><code class="python"># transfer_project/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path(&quot;admin/&quot;, admin.site.urls),
+    path(&quot;&quot;, include(&quot;pages.urls&quot;)),
+]
+
+</code></pre>
+
 <h2 id="test-the-server-locally">Test the server locally</h2>
+<p>Test the server locally with the <code>runserver command</code>. Make sure you are in the <code>(transfer)</code> virtual environment when the command is run.</p>
+<pre><code class="text">$ conda activate transfer
+$ ls
+# (should see manage.py)
+(transfer)$ manangy.py runserver
+</code></pre>
+
+<p>Browse to:</p>
+<blockquote>
+<p><a href="http://localhost:8000">http://localhost:8000</a></p>
+</blockquote>
 <h2 id="summary">Summary</h2>
+<p>In this step of developing the Oregon Engineering Transfer App project we added a home page and an about page to the site. We did this by creating a new <code>Pages</code> app in our <code>transfer_project</code>. We edited the following files:</p>
+<ul>
+<li><code>transfer_project/settings.py</code> - added the <code>Pages</code> app</li>
+<li><code>pages/views.py</code> - added a pages view function</li>
+<li><code>pages/urls.py</code> - added a home page url route </li>
+<li><code>transfer_project/urls.py</code> - added a url route to point to the <code>Pages</code> url routes</li>
+</ul>
+<p>Finally we ran the server locally using <code>manage.py runserver</code> to view the additions we made.</p>
                 
                   
                 

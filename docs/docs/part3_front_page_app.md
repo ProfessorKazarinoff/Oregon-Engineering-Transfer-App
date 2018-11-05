@@ -14,13 +14,17 @@ This is the third part of a multi-part series on building a web app with Python 
 
 ## Django Apps
 
-What is a django app and how is it different from a django project? A djano app is part of a django project. One django project can have many apps.
+What is a Django app and how is it different from a Django project? A djano app is part of a Django project. One Django project can have many apps.
 
 ## Create the pages app
+
+To show our front page and about page, we are going to create a pages app in our Django project.
 
 ## Add the pages app to the list of installed apps
 
 ```python
+# transfer_project/settings.py
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,8 +44,11 @@ INSTALLED_APPS = [
 
 ## Define a homepage view
 
-in pages/views.py
+In ```pages/views.py``` add the following code:
+
 ```python
+# pages/views.py
+
 from django.http import HttpResponse
 
 def homePageView(request):
@@ -50,8 +57,60 @@ def homePageView(request):
 
 ## Configure the homepage URL pattern in the pages app
 
+In ```pages/urls.py``` add the following code:
+
+```python
+# pages/urls.py
+
+from django.urls import path
+from .views import HomePageView, AboutPageView
+
+urlpatterns = [
+    path("about/", AboutPageView.as_view(), name="about"),
+    path("", HomePageView.as_view(), name="home"),
+]
+```
+
 ## Configure the homepage URL pattern in the overall transfer project
+
+In ```transfer_project/urls.py``` add the following code:
+
+```python
+# transfer_project/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("pages.urls")),
+]
+
+```
 
 ## Test the server locally
 
+Test the server locally with the ```runserver command```. Make sure you are in the ```(transfer)``` virtual environment when the command is run.
+
+```text
+$ conda activate transfer
+$ ls
+# (should see manage.py)
+(transfer)$ manangy.py runserver
+```
+
+Browse to:
+
+ > [http://localhost:8000](http://localhost:8000)
+
 ## Summary
+
+In this step of developing the Oregon Engineering Transfer App project we added a home page and an about page to the site. We did this by creating a new ```Pages``` app in our ```transfer_project```. We edited the following files:
+
+ * ```transfer_project/settings.py``` - added the ```Pages``` app
+ * ```pages/views.py``` - added a pages view function
+ * ```pages/urls.py``` - added a home and an about page url route 
+ * ```transfer_project/urls.py``` - added a url route to point to the ```Pages``` url routes
+
+ Finally we ran the server locally using ```manage.py runserver``` to view the additions we made.
+ 

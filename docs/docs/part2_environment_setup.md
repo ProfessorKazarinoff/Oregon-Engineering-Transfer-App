@@ -68,7 +68,7 @@ Now  we see ```(transfer)``` before the terminal prompt. This means we are using
 
 ## Install Django
 
-Time for some fun! Installing Django. Django mature web framework built in Python. Django is included in the default Anaconda channel. The install command is:
+Time for some fun! Installing Django. Django is a mature web framework built in Python. Django is included in the default Anaconda channel. The install command is:
 
 ```text
 (transfer)$ conda install django

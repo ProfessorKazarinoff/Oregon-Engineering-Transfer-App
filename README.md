@@ -21,3 +21,19 @@ A web app that shows how an Engineering class completed at an Oregon Community C
  * Web app is well-documented and upgradable
 
  * Web app is secure to modern standards
+ 
+ ## To work on locally
+ 
+ install [Anaconda distribution of Python](https://anaconda.com/downloads)
+ 
+ ```
+ git clone https://github.com/professorkazarinoff/oregon-transfer-app.git transer
+ cd transfer
+ conda create -n transfer python=3.7
+ conda activate transfer
+ conda install django
+ pip install django-crispy-forms
+ manage.py runserver
+ ```
+ 
+ 

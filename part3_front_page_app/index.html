@@ -538,6 +538,10 @@
 <p>What is a Django app and how is it different from a Django project? A djano app is part of a Django project. One Django project can have many apps.</p>
 <h2 id="create-the-pages-app">Create the pages app</h2>
 <p>To show our front page and about page, we are going to create a pages app in our Django project.</p>
+<pre><code class="text">$ conda activate transfer
+(transfer)$ python managepy startapp pages
+</code></pre>
+
 <h2 id="add-the-pages-app-to-the-list-of-installed-apps">Add the pages app to the list of installed apps</h2>
 <pre><code class="python"># transfer_project/settings.py
 
@@ -599,7 +603,7 @@ urlpatterns = [
 <pre><code class="text">$ conda activate transfer
 $ ls
 # (should see manage.py)
-(transfer)$ manangy.py runserver
+(transfer)$ python manangy.py runserver
 </code></pre>
 
 <p>Browse to:</p>
@@ -614,7 +618,7 @@ $ ls
 <li><code>pages/urls.py</code> - added a home page url route </li>
 <li><code>transfer_project/urls.py</code> - added a url route to point to the <code>Pages</code> url routes</li>
 </ul>
-<p>Finally we ran the server locally using <code>manage.py runserver</code> to view the additions we made.</p>
+<p>Finally we ran the server locally using <code>python manage.py runserver</code> to view the additions we made.</p>
                 
                   
                 

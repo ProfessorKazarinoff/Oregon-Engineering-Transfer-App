@@ -1025,7 +1025,7 @@ TEMPLATES = [
 </code></pre>
 
 <h3 id="add-the-bootswatch-litera-bootstrap-theme-css-to-the-pages-appstaticcss-folder">Add the bootswatch litera bootstrap theme css to the pages app/static/css folder</h3>
-<p>I want the <a href="https://bootswatch.com/">bootswatch</a> <a href="https://bootswatch.com/litera/">litera theme</a> to style the site. I downloaded the <a href="[https://bootswatch.com/4/litera/bootstrap.css](https://bootswatch.com/4/litera/bootstrap.css)">litera theme css</a> and added the css file to /pages/static/css as bootswatch_litera_bootstrap.css. That's the name of the css file we used in the bootstrap_home.html template. Note how the bootstrap_base.html template has the tag {% load staticfiles %}. This tag loads static files (css, javascript, images).</p>
+<p>I want the <a href="https://bootswatch.com/">bootswatch</a> <a href="https://bootswatch.com/litera/">litera theme</a> to style the site. I downloaded the <a href="https://bootswatch.com/4/litera/bootstrap.css">litera theme css</a> and added the css file to <code>/pages/static/css</code> as <code>bootswatch_litera_bootstrap.css</code>. That's the name of the css file we used in the bootstrap_home.html template. Note how the bootstrap_base.html template has the tag {% load staticfiles %}. This tag loads static files (css, javascript, images).</p>
 <p><a href="https://bootswatch.com/4/litera/bootstrap.css">https://bootswatch.com/4/litera/bootstrap.css</a></p>
 <p>I also added an additional small css file called navbar-top-fixed.css to the pages/static/css folder. Without this little piece of css, the main div block of the site was cut off by the nav bar.</p>
 <pre><code class="css">/* pages/static/css/navbar-top-fixed.css */

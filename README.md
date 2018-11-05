@@ -2,6 +2,10 @@
 
 A web app that shows how an Engineering class completed at an Oregon Community College can be transferred to an engineering class in an Oregon 4-year School.  Written in Django and Python.
 
+Documentation on building the Oregon Engineering Transfer Web App can be found here:
+
+ > [https://professorkazarinoff.github.io/Oregon-Engineering-Transfer-App/](https://professorkazarinoff.github.io/Oregon-Engineering-Transfer-App/)
+
 ## Goals
 
  * Web App is useful to student users that want to find transfer classes and useful to administrators that want to post transfer class equivalencies
@@ -22,12 +26,12 @@ A web app that shows how an Engineering class completed at an Oregon Community C
 
  * Web app is secure to modern standards
  
- ## To work on locally
+ ## To work the Oregon Engineering Transfer App on locally
  
- install [Anaconda distribution of Python](https://anaconda.com/downloads)
+Install the [Anaconda distribution of Python](https://anaconda.com/downloads). Open the Anaconda Prompt from the Windows 10 start menu. Enter in the following commands at the prompt:
  
- ```
- git clone https://github.com/professorkazarinoff/oregon-transfer-app.git transer
+ ```text
+ git clone https://github.com/professorkazarinoff/oregon-transfer-app.git transfer
  cd transfer
  conda create -n transfer python=3.7
  conda activate transfer
@@ -35,5 +39,4 @@ A web app that shows how an Engineering class completed at an Oregon Community C
  pip install django-crispy-forms
  manage.py runserver
  ```
- 
  

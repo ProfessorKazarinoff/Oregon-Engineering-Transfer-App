@@ -24,7 +24,7 @@ Or click the arrows at the bottom of each page.
 
 ## Goals
 
- * Web App is useful to student users who want to find transfer classes and useful to administrators who want to post transfer class equivalencies
+ * Web App is useful to student users that want to find transfer classes and useful to administrators that want to post transfer class equivalencies
 
  * User interface is easy to use and intuitive. Easy for students to select colleges and major and see transfer class equivalencies
 
@@ -42,9 +42,9 @@ Or click the arrows at the bottom of each page.
 
  * Web app is secure to modern standards
  
- ## To work on the project locally
+ ## To work the Oregon Engineering Transfer App on locally
  
- Install the [Anaconda distribution of Python](https://anaconda.com/downloads). Open the Anaconda Prompt. Run the following commands:
+Install the [Anaconda distribution of Python](https://anaconda.com/downloads). Open the Anaconda Prompt from the Windows 10 start menu. Enter in the following commands at the prompt:
  
  ```text
  git clone https://github.com/professorkazarinoff/oregon-transfer-app.git transfer
@@ -55,7 +55,4 @@ Or click the arrows at the bottom of each page.
  pip install django-crispy-forms
  manage.py runserver
  ```
-
- [Ctrl]-[c] to exit.
-
  

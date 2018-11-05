@@ -12,7 +12,7 @@ Summary: This is the second part of a multi-part series on building a web app wi
 
 This is the second part of a multi-part series on building a web app with Python and Django. The web app will act as a resource for Engineering students at Oregon Community Colleges that want to transfer to 4-year Universities. The transfer web app will show which classes from their community college engineering program will transfer to which classes in a 4-year University engineering program. In this second post, I'll review the development environment I used to set up and build the web app. This includes installing the Anaconda distribution of Python, creating a GitHub repo, synching a local directory to the GitHub repo, installing packages, starting the project and running the project for the first time.
 
-#Setting up the development environment
+# Setting up the development environment
 
 What does that even mean? Before I started building the Oregon Engineering Transfer App, I needed to make sure the necessary software, packages and settings were in place. This starts with setting up a _development environment_. To me, a development environment is simply the software on a computer that allows me to get work done. In this case the development environment means the tools necessary to build this site. A list of the tools and technologies are below:
 
@@ -50,7 +50,7 @@ Download the latest release at:
 The Anaconda distribution of Python comes with an up-to-date and stable version of Python (Python 3.6, byt Python 3.7 can be specified during the creation of a virtual environment) and the **Anaconda Prompt**. The **Anaconda Prompt** is useful because it allows me to run shell commands on my Windows 10 machines. These are the same commands I would run in the terminal on my MacOS or Linux boxes. The **Anaconda Prompt** makes creating and activiting virtual environments easy and allows me to use git on Windows 10. Follow this post to [install the Anaconda on Windows 10.](https://pythonforundergradengineers.com/installing-anaconda-on-windows.html)
 
  
-### Create a new virtual environment
+## Create a new virtual environment
 
 Before installing Django, we should create a new virtual environment. The same virtual environment on each of the computers I use means the same packages are installed on each computer. To create a new virtual environment, open up the Anaconda Prompt (on Windows) or a terminal (on Linux or Mac OSX). Let's call our new virtual environment ```transfer```. The ```conda create``` command creates the environment and the ```-n staticsite``` flag adds the name. ```python=3.7``` sets the Python version at 3.7.
 

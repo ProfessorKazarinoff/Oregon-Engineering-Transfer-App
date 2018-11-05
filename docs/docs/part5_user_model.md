@@ -237,7 +237,7 @@ After logging in with the superuser credentials, the Django admin dashboard pops
 
 Using the Django admin dashboard, create a new user by clicking the [+user] button.
 
-![Django admin create new user](images/django_admin_create_new_user.png)
+![Django admin create new user](images/django_admin_create_user.png)
 
 ## Mondify the user app admin.py to include the fields 'job' and 'university'
 

@@ -252,7 +252,7 @@ In the templates directory add another .html file called bootstrap_base.html. In
 
 ### Add the bootswatch litera bootstrap theme css to the pages app/static/css folder
 
-I want the [bootswatch](https://bootswatch.com/) [litera theme](https://bootswatch.com/litera/) to style the site. I downloaded the [litera theme css]([https://bootswatch.com/4/litera/bootstrap.css](https://bootswatch.com/4/litera/bootstrap.css)) and added the css file to /pages/static/css as bootswatch_litera_bootstrap.css. That's the name of the css file we used in the bootstrap_home.html template. Note how the bootstrap_base.html template has the tag {% load staticfiles %}. This tag loads static files (css, javascript, images).
+I want the [bootswatch](https://bootswatch.com/) [litera theme](https://bootswatch.com/litera/) to style the site. I downloaded the [litera theme css](https://bootswatch.com/4/litera/bootstrap.css) and added the css file to ```/pages/static/css``` as ```bootswatch_litera_bootstrap.css```. That's the name of the css file we used in the bootstrap_home.html template. Note how the bootstrap_base.html template has the tag {% load staticfiles %}. This tag loads static files (css, javascript, images).
 
 [https://bootswatch.com/4/litera/bootstrap.css](https://bootswatch.com/4/litera/bootstrap.css)
 

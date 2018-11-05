@@ -155,9 +155,7 @@ After we log in, we are taken back to the homepage, but now the menu in the uppe
 
 ![Home Page Logged in as Peter](images/home_page_logged_in_as_peter.png)
 
-If will click [Profile] from the drop down menu, we are brought to the profile page. Awesome!
-
-![Profile Page Logged in as Peter](images/profile_page_logged_in_as_peter.png)
+When we click [Profile] from the drop down menu, we are brought to the profile page. Awesome!
 
 ## Build tests for profile page
 

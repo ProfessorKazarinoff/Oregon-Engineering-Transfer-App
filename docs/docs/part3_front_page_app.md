@@ -20,6 +20,11 @@ What is a Django app and how is it different from a Django project? A djano app 
 
 To show our front page and about page, we are going to create a pages app in our Django project.
 
+```text
+$ conda activate transfer
+(transfer)$ python managepy startapp pages
+```
+
 ## Add the pages app to the list of installed apps
 
 ```python
@@ -95,7 +100,7 @@ Test the server locally with the ```runserver command```. Make sure you are in t
 $ conda activate transfer
 $ ls
 # (should see manage.py)
-(transfer)$ manangy.py runserver
+(transfer)$ python manangy.py runserver
 ```
 
 Browse to:
@@ -111,5 +116,5 @@ In this step of developing the Oregon Engineering Transfer App project we added 
  * ```pages/urls.py``` - added a home page url route 
  * ```transfer_project/urls.py``` - added a url route to point to the ```Pages``` url routes
 
- Finally we ran the server locally using ```manage.py runserver``` to view the additions we made.
+ Finally we ran the server locally using ```python manage.py runserver``` to view the additions we made.
  

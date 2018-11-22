@@ -1,0 +1,12 @@
+server {
+  listen 80;
+  server_name 54.185.246.106;
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location /static/ {
+        root /home/ubuntu/repo_name;
+  }
+  location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/repo_name/transfer_project.sock;
+  }
+}

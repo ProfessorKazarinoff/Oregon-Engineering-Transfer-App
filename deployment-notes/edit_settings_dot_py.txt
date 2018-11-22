@@ -1,0 +1,7 @@
+# Modify settings.py in transfer_project
+
+DEBUG = False
+ALLOWED_HOSTS =['aws instance IP address']
+
+# At the bottom
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")

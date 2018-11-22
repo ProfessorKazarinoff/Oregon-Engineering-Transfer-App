@@ -1,6 +1,6 @@
 server {
   listen 80;
-  server_name 54.185.246.106;
+  server_name AWS_server_IP_no_quotes;
   location = /favicon.ico { access_log off; log_not_found off; }
   location /static/ {
         root /home/ubuntu/repo_name;

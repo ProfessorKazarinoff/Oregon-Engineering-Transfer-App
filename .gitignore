@@ -202,3 +202,7 @@ tests/report/
 # MkDocs documentation
 site/
 docs/site/
+
+# Before deployment
+*.pyc
+venv/

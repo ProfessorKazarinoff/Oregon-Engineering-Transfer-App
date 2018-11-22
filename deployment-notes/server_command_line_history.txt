@@ -1,0 +1,72 @@
+ 1  ls
+    2  sudo apt-get update
+    3  sudo apt-get intall python-pip python-dev nginx git tree curl wget
+    4  sudo apt-get install python-pip python-dev nginx git tree curl wget
+    5  sudo apt-get update
+    6  sudo pip install virtualenv
+    7  git clone https://github.com/ProfessorKazarinoff/Oregon-Engineering-Transfer-App.git
+    8  git clone https://github.com/ProfessorKazarinoff/Oregon-Engineering-Transfer-App.git repo_name
+    9  ls
+   10  sudo rm -rf Oregon-Engineering-Transfer-App/
+   11  ls
+   12  cd repo_name
+   13  ls
+   14  virtualenv venv --python=python3
+   15  source venv/bin/activate
+   16  pip install -r requirements.txt
+   17  nano requirements.txt
+   18  pip install -r requirements.txt
+   19  nano requirements.txt
+   20  pip install -r requirements.txt
+   21  nano requirements.txt
+   22  pip install -r requirements.txt
+   23  nano requirements.txt
+   24  pip install -r requirements.txt
+   25  nano requirements.txt
+   26  pip install -r requirements.txt
+   27  nano requirements.txt
+   28  pip install -r requirements.txt
+   29  nano requirements.txt
+   30  pip install -r requirements.txt
+   31  nano requirements.txt
+   32  pip install -r requirements.txt
+   33  nano requirements.txt
+   34  pip install -r requirements.txt
+   35  nano requirements.txt
+   36  pip install -r requirements.txt
+   37  nano requirements.txt
+   38  pip install -r requirements.txt
+   39  nano requirements.txt
+   40  pip install -r requirements.txt
+   41  pip install django
+   42  pip install django-crispy-forms
+   43  pip install django-bootstrap4
+   44  pip install django bcrypt django-extensions
+   45  pip install gunicorn
+   46  ls
+   47  cd transfer_project
+   48  ls
+   49  nano settings.py
+   50  cd ..
+   51  ls
+   52  python manage.py collectstatic
+   53  gunicorn --bind 0.0.0.0:8000 transfer_project.wsgi:application
+   54  deactivate
+   55  sudo vim /etc/systemd/system/gunicorn.service
+   56  sudo systemctl daemon-reload
+   57  sudo systemctl start gunicorn
+   58  sudo systemctl enable gunicorn
+   59  sudo systemctl status gunicorn
+   60  sudo vim /etc/nginx/sites-available/transfer_project
+   61  sudo ln -s /etc/nginx/sites-available/transfer_project /etc/nginx/sites-enabled
+   62  sudo nginx -t
+   63  sudo rm /etc/nginx/sites-enabled/default
+   64  sudo service nginx restart
+   65  cd /etc/nginx/sites-available
+   66  ls
+   67  sudo vim transfer_project
+   68  cd ..
+   69  cd systemd/system
+   70  ls
+   71  sudo vim gunicorn.service
+   72  history

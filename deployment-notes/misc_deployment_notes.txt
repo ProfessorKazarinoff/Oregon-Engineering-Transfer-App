@@ -1,0 +1,1 @@
+When aws instance is created, need to add your laptops individual IP (which auto populates) un SSH, then add http, https, all users

@@ -99,24 +99,133 @@ Now close the Anaconda Prompt. We'll use the Git Bash terminal (instead of the A
 
 ## Create and log into the AWS instance
 
-Open the Git Bash command window. Start an AWS EC2 instance of Ubuntu 16.04.  Add the following to the security access:
+Log into the AWS Web Console at the following link:
 
-SSH - your personal IP, should be auto-populated
-HTTP - everyone, all IPs
-HTTPS - everyone, all IPs
+ > [https://aws.amazon.com/console/
+](https://aws.amazon.com/console/
+)
 
+![AWS Login Screen](images/aws_login_screen.png)
+
+In the AWS Console window select Service --> Compute --> EC2 --> Launch Instance.
+
+![AWS services menu](images/aws_services_EC2.png)
+
+![AWS Resources Launch Instance](images/aws_create_instance_launch_instance.png)
+
+Scroll down the operating system options and select ```Ubuntu Server 16.04 LTS (HVM), SSD Volume Type```. This option is part of the AWS free tier.
+
+![AWS Ubuntu 16.04 Option](images/aws_select_ubuntu16dot04_server.png)
+
+Choose [select] then [Review and Launch].
+
+![AWS review and launch](images/aws_review_and_launch.png)
+
+Before we [Launch] the final server, we need to edit the security group options. Scroll down and select [Edit Security Groups]
+
+![AWS security groups](images/aws_edit_security_groups.png)
+
+Add the following security options:
+
+SSH - your personal IP, auto-populates
+HTTP - Anywhere, all IPs
+HTTPS - Anywhere, all IPs
+
+![AWS security options](images/aws_security_groups_added.png)
+
+After the three security rules are added, click [Review and Launch]
+
+At the review screen, click [Launch]
+
+![AWS_final_launch](images/aws_final_launch.png)
+
+In the pop-up window, select [Create a New Key Pair] from the dropdown menu. 
+
+![AWS download key pair](aws_download_key_pair.png)
+
+Move the ```.pem``` key from the ```Downloads``` folder to a known location. Note the location where the ```.pem``` key file was moved to. We will need to ```cd``` into that location to log into the server.
+
+Finally, click the [Launch Instances] in pop-up box. 
+
+![AWS popup launch instances](images/aws_popup_final_launch_instances.png)
+
+You will see a status window that shows your instances are launching. It takes a couple minutes for the instance to launch. 
+
+![AWS intances launching](images/aws_launch_status.png)
+
+Scroll down and click the [View Instances Button]
+
+![AWS view instances](images/aws_view_instances_button.png)
+
+You can change the instance name by clicking the pencil icon in the [name] field.
+
+![AWS change name](images/aws_change_name_pencil.png)
+
+Select the instance (box to the left of the instance name turns blue when instance is selected) and click [Connect]
+
+![AWS Connect Button](images/aws_connect_to_instance.png)
+
+Copy the SSH connection command from the pop-up window. We will run a modified version of this command in the Git Bash prompt.
+
+![AWS SSH Command](images/aws_copy_SSH_command.png)
+
+Open the Git Bash Prompt, and ```cd``` into the directory where the ```.pem``` file from earlier was saved. Run the ```ls``` command and make sure the ```.pem``` file downloaded earlier is present. 
+
+![Git Bash in start window](images/git_bash_in_start_window.png)
+
+Copy the SSH login command from the AWS console pop-up window into the Git Bash prompt. The left mouse button can be used to paste.
+
+![Git Bash paste SSH command](images/git_bash_paste.png)
+
+Enter ```yes``` at the prompt to connect.
+
+![Git Bash yes](images/git_bash_sure_connect_yes.png)
+
+You will see the terminal prompt for the AWS server in the command window. Type the ```pwd``` command to print the current working directory. You should be in the ```/home/ubuntu``` directory.
+
+```text
+# on server
+$ ls
+/home/ubuntu
+```
+
+![Git Bash ls after login](image/git_bash_pwd_after_login.png)
+
+We have now completed the following steps:
+
+ * launched a new AWS EC2 instance
+ * logged into our new AWS EC2 intance
 
 ## Update the server
 
+After the AWS server is created, the operating system and installed packages on the server should be updated. Run the following commands in the Git Bash window
+
 ```text
 $ sudo apt-get update
+
+$ sudo apt-get upgrade
 ```
+
+When asked ```What would you like to do about modified configuration file grub?``` Type ```1``` to choose ```install the package maintainer's version``` 
+
+![What to do with grub file](images/what_to_do_with_grub_file.png)
+
+After all the operating system and installed packages are upgraded, run the command ```sudo apt-get update``` again. You should see that updates are 100 percent complete.
+
+![updates complete](images/final_apt_get_upade.png)
 
 ## Install packages with apt
 
+Now that the server and and the server's installed packages are up-to-date, we can install the packages we need to get the Django app up and running. Run the following commands:
+
 ```text
-$ sudo apt-get intall python-pip python-dev nginx git tree curl wget
-$ sudo apt-get update
+$ sudo apt-get install python-pip python-dev nginx git tree curl wget
+```
+
+Type ```y``` to confirm the installation. After the packages are installed, run ```apt-get upgrade``` again to make sure the packages we installed are up-to-date.
+
+```text
+$ sudo apt-get upgrade
 ```
 
 ## Clone the GitHub repo

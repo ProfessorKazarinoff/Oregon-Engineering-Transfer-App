@@ -206,3 +206,4 @@ docs/site/
 # Before deployment
 *.pyc
 venv/
+env/

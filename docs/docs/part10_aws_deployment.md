@@ -24,7 +24,7 @@ Once signed in, you should be greeted by the ASW managment console
 
 ## Update requirements.txt and push to GitHub
 
-Back at the local machine, activate the ```(transfer)``` virtual environment and ```cd``` into the ```transfer``` project. Use ```pip freeze``` to create a ```requirement.txt``` file. On Windows, the command ```pip freeze > requirements.txt``` was needed. Note the ```>``` character in the middle of the command.
+Back at the local machine, open the Anaconda Prompt and activate the ```(transfer)``` virtual environment. Then ```cd``` into the ```transfer``` project. Use ```pip freeze``` to create a ```requirement.txt``` file. On Windows, the command ```pip freeze > requirements.txt``` was needed. Note the ```>``` character in the middle of the command. The ```requirements.txt``` file contains all the Python packages used in the ```(transfer)``` virtual environment. Later, we will install these same Python packages on the server. 
 
 ```text
 $ conda activate transfer
@@ -51,7 +51,7 @@ livereload==2.5.2
 ...
 ```
 
-Add, commit and push the changes to GitHub.
+Add, commit and push the changes to GitHub. 
 
 ```
 (transfer)$ git add .
@@ -59,7 +59,32 @@ Add, commit and push the changes to GitHub.
 (transfer)$ git push origin master
 ```
 
-## Create and log into an AWS instance
+Do a quick check that the Django project runs without errors and works as expected on the local machine. If the Django project doesn't run on the local machine, there is no way it will work on the AWS server. We start the development server with the command:
+
+```text
+(transfer)$ pwd
+# make sure manage.py is in the current working directory
+
+(transfer)$ python manage.py runserver
+
+Django version 2.1.2, using settings 'transfer_project.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+```
+
+Point a web browser to:
+
+ > [http://localhost:8000/](http://localhost:8000/)
+
+See the Oregon Transfer App in all it's glory:
+
+![Transfer App home page](images/home_page_login_button.png)
+
+The following tasks are complete: ```requirements.txt``` created, changes pushed to GitHub, and the Django App runs locally as expected with no errors. 
+
+Now close the Anaconda Prompt. We'll use the Git Bash terminal (instead of the Anaconda Prompt) later in the Deployment.
+
+## Create and log into the AWS instance
 
 Open the Git Bash command window. Start an AWS ec2 instance of Ubuntu 16.04.  Add the following to the security access
 

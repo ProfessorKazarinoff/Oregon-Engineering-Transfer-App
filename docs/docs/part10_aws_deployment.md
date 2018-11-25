@@ -1,31 +1,62 @@
 # Deployment on AWS
 
+In this section, we are going to deploy the Oregon Engineering Transfer App on Amazon Web Services (AWS). More specifically, we are going to deploy this Django web app on an AWS EC2 instance. An instance is AWS speak for a virtual private server. These same type of virtual private servers are available from Digital Ocean and Linode. An advantage to AWS is that there is a free trier which includes one EC2 instance (one server), so getting the Django App running on AWS should be free.
+
+These steps are slight modifications of a procedure from [Coding Dojo](https://www.codingdojo.com/). Coding Dojo have coding boot camps to get programmers ready for jobs quickly. Their coding bootcamps are 14 weeks and include Python, Django and flask as part of the curriculum. 
+
+A summary of steps in below:
+
 [TOC]
 
 ## Sign up for Amazon Web Services (AWS) account
 
-Sign up for an AWS account. We will use the AWS free tier to deploy this Django project.
+Sign up for an Amazon Web Services (AWS) account here:
+
+ > [https://aws.amazon.com/](https://aws.amazon.com/)
+
+We will use the AWS free tier to deploy this Django project. Once you sign up for an account, you have to go to your email and activate the account. Then log into AWS by clicking the [Sign into Console] button.
+
+![AWS sign into console](images/aws_sign_into_console_button.png)
+
+Once signed in, you should be greeted by the ASW managment console
+
+![AWS Management Console](images/aws_management_console.png)
 
 ## Update requirements.txt and push to GitHub
 
-```
+Back at the local machine, activate the ```(transfer)``` virtual environment and ```cd``` into the ```transfer``` project. Use ```pip freeze``` to create a ```requirement.txt``` file. On Windows, the command ```pip freeze > requirements.txt``` was needed. Note the ```>``` character in the middle of the command.
+
+```text
 $ conda activate transfer
+
 (transfer)$ cd transfer
 (transfer)$ pwd
 /home/Documents/transfer
 (transfer)$ ls
-requirments.txt manage.py 
+courses/           docs/       pages/            templates/
+db.sqlite3         LICENSE     README.md         transfer_project/  manage.py*  users/
+
 (transfer)$ pip freeze > requirements.txt
 ```
 
-Take a look at the ```requirments.txt``` file. Ensure the file contains Django, django-crispy-forms and django-bootstrap.
+Take a look at the ```requirments.txt``` file. Ensure the file contains Django, django-crispy-forms and django-bootstrap. A partial listing of the ```requirements.txt``` file is below:
 
-Add, commit and push the changes to GitHub
+```text
+certifi==2018.10.15
+Click==7.0
+Django==2.1.2
+django-crispy-forms==1.7.0
+Jinja2==2.10
+livereload==2.5.2
+...
+```
+
+Add, commit and push the changes to GitHub.
 
 ```
-$ git add .
-$ git commit -m "updated requirements.txt"
-$ git push origin master
+(transfer)$ git add .
+(transfer)$ git commit -m "updated requirements.txt"
+(transfer)$ git push origin master
 ```
 
 ## Create and log into an AWS instance

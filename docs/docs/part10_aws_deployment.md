@@ -1,10 +1,10 @@
 # Deployment on AWS
 
-In this section, we are going to deploy the Oregon Engineering Transfer App on Amazon Web Services (AWS). More specifically, we are going to deploy this Django web app on an AWS EC2 instance. An instance is AWS speak for a virtual private server. This same type of virtual private servers are available from Digital Ocean and Linode. AWS calls them EC2 _instances_. Digital Ocean calls them _Droplets_.
+In this section, we are going to deploy the Oregon Engineering Transfer App on Amazon Web Services (AWS). More specifically, we are going to deploy this Django web app on an AWS EC2 instance. An instance is AWS speak for a virtual private server. This same type of virtual private server is available from other companies such as Digital Ocean and Linode. AWS calls virtual private servers EC2 _instances_. 
 
- An advantage of AWS, compared to Digital Ocean or Linode, is a free trier which includes one EC2 instance (one server). Therefore, running our Django App running on AWS should be free.
+ An advantage of deploying our Django app on AWS, compared to Digital Ocean or Linode, is AWS has a free tier. The AWS free tier includes one EC2 instance (one server) for free. Therefore, running our Django App on AWS should be free.
 
-The steps to deploy our Django App on AWS are a slight modification of a procedure from [Coding Dojo](https://www.codingdojo.com/). Coding Dojo hosts coding boot camps to get programmers ready for jobs quickly. Their coding bootcamps are 14 weeks long. The Coding Dojo bootcamps include Python, Django and Flask in the curriculum. 
+The steps below to deploy our Django App on AWS are a slight modification of a procedure from [Coding Dojo](https://www.codingdojo.com/). Coding Dojo hosts coding boot camps to get programmers ready for jobs quickly. Their coding bootcamps are 14 weeks long. The Coding Dojo bootcamps include Python, Django and Flask in the curriculum as well as other web development stacks. 
 
 A summary of steps to deploy our Django App on AWS is below:
 
@@ -16,17 +16,19 @@ Sign up for an Amazon Web Services (AWS) account here:
 
  > [https://aws.amazon.com/](https://aws.amazon.com/)
 
-We will use the AWS free tier to deploy this Django project. Once you sign up for an account, you have to go to your email and activate your aws account. After your account is active, log into AWS by clicking the [Sign into Console] button.
+Once you sign up for an account, you have to go to your email and activate your AWS account. After your account is active, log into the AWS Console by clicking the [Sign into Console] button.
 
 ![AWS sign into console](images/aws_sign_into_console_button.png)
 
-Once signed in, you are greeted by the ASW managment console:
+Once signed in, you are greeted by the ASW Managment Console:
 
 ![AWS Management Console](images/aws_management_console.png)
 
 ## Update requirements.txt and push to GitHub
 
-Back at the local machine, open the Anaconda Prompt and activate the ```(transfer)``` virtual environment. Then ```cd``` into the ```transfer``` project. Use ```pip freeze``` to create a ```requirement.txt``` file. On Windows, the command ```pip freeze > requirements.txt``` was needed. Note the ```>``` character in the middle of the command. The ```requirements.txt``` file contains all the Python packages used in the ```(transfer)``` virtual environment.
+Back at the local machine, open the Anaconda Prompt and activate the ```(transfer)``` virtual environment. Then ```cd``` into the ```transfer``` project.
+
+Use ```pip freeze``` to create a ```requirement.txt``` file. On Windows, the command ```pip freeze > requirements.txt``` was needed. Note the ```>``` character in the middle of the command. The ```requirements.txt``` file contains all the Python packages used in the ```(transfer)``` virtual environment.
 
 Later, we will install these same Python packages on the server. 
 
@@ -56,7 +58,16 @@ livereload==2.5.2
 ...
 ```
 
-Add, commit and push the changes to GitHub. 
+We also need to modify the ```.gitignore``` file. Open the ```.gitignore``` file and add ```env/``` on it's own line at the bottom of the file. This addition will ensure that the virtual environment we create on the server does not get saved in our git revision history.
+
+```text
+# .gitignore
+
+# Ignore the entire env directory
+env/
+```
+
+Save the .gitignore file. Add, commit and push the changes to GitHub. 
 
 ```
 (transfer)$ git add .
@@ -141,19 +152,19 @@ At the review screen, click [Launch]
 
 In the pop-up window, select [Create a New Key Pair] from the dropdown menu. 
 
-![AWS download key pair](aws_download_key_pair.png)
+![AWS download key pair](images/aws_download_key_pair.png)
 
 Move the ```.pem``` key from the ```Downloads``` folder to a known location. Note the location where the ```.pem``` key file was moved to. We will need to ```cd``` into that location to log into the server.
 
-Finally, click the [Launch Instances] in pop-up box. 
+Finally, click the [Launch Instances] at the bottom of the pop-up box. 
 
 ![AWS popup launch instances](images/aws_popup_final_launch_instances.png)
 
-You will see a status window that shows your instances are launching. It takes a couple minutes for the instance to launch. 
+This produce a status window that shows our instances are launching. It takes a couple minutes for the instance to launch. 
 
 ![AWS intances launching](images/aws_launch_status.png)
 
-Scroll down and click the [View Instances Button]
+Scroll down and click [View Instances].
 
 ![AWS view instances](images/aws_view_instances_button.png)
 
@@ -165,15 +176,15 @@ Select the instance (box to the left of the instance name turns blue when instan
 
 ![AWS Connect Button](images/aws_connect_to_instance.png)
 
-Copy the SSH connection command from the pop-up window. We will run a modified version of this command in the Git Bash prompt.
+Copy the SSH connection command from the pop-up window. We will run this command in the Git Bash prompt.
 
 ![AWS SSH Command](images/aws_copy_SSH_command.png)
 
-Open the Git Bash Prompt, and ```cd``` into the directory where the ```.pem``` file from earlier was saved. Run the ```ls``` command and make sure the ```.pem``` file downloaded earlier is present. 
+Open the Git Bash Prompt, and ```cd``` into the directory where the ```.pem``` file we downloaded earlier is saved. Run the ```ls``` command and make sure the ```.pem``` file downloaded earlier is present. 
 
 ![Git Bash in start window](images/git_bash_in_start_window.png)
 
-Copy the SSH login command from the AWS console pop-up window into the Git Bash prompt. The left mouse button can be used to paste.
+Copy the SSH login command from the AWS console pop-up window into the Git Bash Prompt. The right mouse button can be used to paste.
 
 ![Git Bash paste SSH command](images/git_bash_paste.png)
 
@@ -189,7 +200,7 @@ $ ls
 /home/ubuntu
 ```
 
-![Git Bash ls after login](image/git_bash_pwd_after_login.png)
+![Git Bash ls after login](images/git_bash_pwd_after_login.png)
 
 We have now completed the following steps:
 
@@ -216,13 +227,13 @@ After all the operating system and installed packages are upgraded, run the comm
 
 ## Install packages with apt
 
-Now that the server and and the server's installed packages are up-to-date, we can install the packages we need to get the Django app up and running. Run the following commands:
+Now that the server and the server's installed packages are up-to-date, we can install the packages we need to get the Django app up and running. Run the following commands:
 
 ```text
 $ sudo apt-get install python-pip python-dev nginx git tree curl wget
 ```
 
-Type ```y``` to confirm the installation. After the packages are installed, run ```apt-get upgrade``` again to make sure the packages we installed are up-to-date.
+Type ```y``` to confirm the installation. After the packages are installed, run ```apt-get upgrade``` again to make sure the packages we installed are all up-to-date.
 
 ```text
 $ sudo apt-get upgrade

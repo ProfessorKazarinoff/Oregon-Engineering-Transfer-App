@@ -138,9 +138,9 @@ Before we [Launch] the final server, we need to edit the security group options.
 
 Add the following security options:
 
-SSH - your personal IP, auto-populates
-HTTP - Anywhere, all IPs
-HTTPS - Anywhere, all IPs
+ * SSH - your personal IP, auto-populates
+ * HTTP - Anywhere, all IPs
+ * HTTPS - Anywhere, all IPs
 
 ![AWS security options](images/aws_security_groups_added.png)
 
@@ -241,11 +241,18 @@ $ sudo apt-get upgrade
 
 ## Clone the GitHub repo
 
+Next, we'll clone the GitHub repo that contains our Django project. Note the ```repo_name``` directory name is spelled out after the url. This means the contents of the GitHub repo will be placed in a directory called ```repo_name```. If this is omitted, the contents of the repo will go into a directory called ```Oregon-Engineering-Transfer-App```. That's a long directory name to type. ```repo_name``` is easier to type and will hopefully cut down on errors later in the deployment process.
+
 ```text
 $ git clone https://github.com/ProfessorKazarinoff/Oregon-Engineering-Transfer-App.git repo_name
+
+$ ls
+repo_name
 ```
 
 ##  Install virtualenv
+
+We will run our Django app with Python3, not legacy Python (version 2.7). We'll install ```virtualenv``` with ```pip``` so that we can create a virtual environment for our Django App to run in.
 
 ```text
 $ sudo pip install virtualenv
@@ -253,41 +260,63 @@ $ sudo pip install virtualenv
 
 ## Create a new virtual environement
 
+With ```virtualenv``` installed, we can ```cd``` into the ```repo_name``` directory and create a new virtual environment called ```env``` that contains Python3. Then we'll activate the virtual environment with ```source env/bin/activate```. Note that when the virtual environment is activate, the environment name ```(env)``` is shown before the command prompt.
+
 ```text
 $ cd repo_name
 $ ls
 manage.py requirements.txt
-$ virtualenv venv --python=python3
-$ source venv/bin/activate
+$ virtualenv env --python=python3
+$ source env/bin/activate
+(env)$
 ```
 
 ## Install Python packages
 
+Make sure the ```(env)``` virtual environment is activate and we are in the ```repo_dir``` base directory that contains the ```requirements.txt``` file. Install all of the Python packages in one go with ```pip install -r requirements.txt```.
+
 ```text
-$ pip install -r requirements.txt
+(env)$ pwd
+/home/ubuntu/repo_name
+
+(env)$ ls
+courses           env        pages             templates
+deployment-notes  LICENSE    README.md         transfer_project
+docs              manage.py  requirements.txt  users
+
+(env)$ pip install -r requirements.txt
+
 ```
 
-The packages we need are below. When these are pip installed, the terminal window should output ```requirement already satisfied```
+Make sure all the packages in the requirements.txt file are installed without an error. If there is a problem, you may need to remove a package that was ```conda``` installed that can't be installed by ```pip```.
+
+The packages we need are below. When these are ```pip``` installed, the terminal should output ```Requirement already satisfied```
 
 ```text
-$ pip install django
-$ pip install django-crispy-forms
-$ pip install django-bootstrap4
+(env)$ pip install django
+(env)$ pip install django-crispy-forms
 ```
 
 ## Install gunicorn, bcrypt and django-extensions
 
+We need a couple of extra Python packages for our Django deployment on AWS. Install them with ```pip```. Make sure the ```(env)``` virtual environment is active when the ```pip install``` command is run.
+
 ```text
-$ pip install gunicorn
-$ pip install bcrypt django-extensions
+(env)$ pip install gunicorn
+(env)$ pip install bcrypt django-extensions
 ```
 
 ## Modify ```settings.py```
 
+Next we'll modify the ```settings.py``` file in the ```repo_name/transfer_project``` directory.
+
 ```text
-$ cd transfer_project
-$ ls
-$ nano settings.py
+(env)$ cd transfer_project
+
+(env)$ ls
+__init__.py  settings.py  urls.py  wsgi.py
+
+(env)$ nano settings.py
 ```
 
 Add the AWS instance IP address to the allowed hosts, set debug to False.
@@ -306,29 +335,44 @@ At the bottom of ```settings.py``` add a line for the static root file path:
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 ```
 
-Ctrl-x to and [yes] to save and exit
+[Ctrl]-[x] and [yes] to save and exit.
 
 ## Collect Static
 
+Now we'll copy the static sites into the directory we specified in the ```STATIC_ROOT``` setting of the ```settings.py``` file. We'll also migrate the database with the ```makemigrations``` and ```migrate``` commands.
+
 ```text
-$ cd ~/repo_name
-$ python manage.py collectstatic
+(env)$ cd ~/repo_name
+(env)$ python manage.py collectstatic
+(env)$ python manage.py makemigrations
+(env)$ python manage.py migrate.
 ```
 
 ## Test gunicrn
 
+Next we'll test that ```gunicorn``` can work with our Django app. When the ```--bind``` command is run, you should not see any errors. Type [Ctrl]-[c] to exit.
+
 ```text
-$ gunicorn --bind 0.0.0.0:8000 transfer_project.wsgi:application
-deactivate
+(env)$ gunicorn --bind 0.0.0.0:8000 transfer_project.wsgi:application
+# should see no errors
+````
+
+Now deactivate the ```(env)``` virtual environment. After deactivation, there should no longer be an ```(env)``` before command prompt
+
+```text
+(env)$ deactivate
+$
 ```
 
 ## Create gunicorn.service file
+
+We are going to run ```gunicorn``` as a system service. To run ```gunicorn``` as a system service, we need to create a systemd configuration file.
 
 ```text
 $ sudo vim /etc/systemd/system/gunicorn.service
 ```
 
-Fill out the ```gunicorn.service``` file as below:
+Fill out the ```gunicorn.service``` file as below. Note you need to type ```i``` in the vim text editor to enter "insert" mode. Type [Esc] to go back to command mode. The command to write and quit is ```:wq```.
 
 ```text
 [Unit]
@@ -338,7 +382,7 @@ After=network.target
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/repo_name
-ExecStart=/home/ubuntu/repo_name/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/repo_name/transfer_project.sock transfer_project.wsgi:application
+ExecStart=/home/ubuntu/repo_name/env/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/repo_name/transfer_project.sock transfer_project.wsgi:application
 [Install]
 WantedBy=multi-user.target
 
@@ -346,20 +390,28 @@ WantedBy=multi-user.target
 
 ## Run gunicorn service
 
+Now we'll run the ```gunicorn``` system service. Type the following commands. After the ```status``` command, you should see ```Active: active (running)``` in the Git Bash window. If you see ```Failed``` then something is wrong with the ```gunicorn.service``` file created earlier.
+
 ```text
 $ sudo systemctl daemon-reload
 $ sudo systemctl start gunicorn
 $ sudo systemctl enable gunicorn
 $ sudo systemctl status gunicorn
+
+ gunicorn.service - gunicorn daemon
+   Loaded: loaded (/etc/systemd/system/gunicorn.service; enabled; vendor preset: enabled)
+   Active: active (running)
 ```
 
 ## Create nginx configuration
    
-```  text 
+Next we'll write an ```nginx``` configuration file. 
+
+```text 
 $ sudo vim /etc/nginx/sites-available/transfer_project
 ```
 
-Fill out the ```transfer_project``` file as below:
+Fill out the ```transfer_project``` file as below. Make sure to modify the text ```AWS_server_IP_no_quotes``` with the IP address of the AWS instance. The IP should not be surrounded by quotes and should be followed by a semicolon. 
 
 ```text
 server {
@@ -379,16 +431,55 @@ server {
 
 ## Link the nginx configuration and restart nginx
 
+Getting close to the end. Now we'll create a symbolic link between the ```sites-available/transfer_project``` file and the ```sites-enabled``` directory. This effectively puts the ```nginx``` configuration file we constructed in the ```sites-available``` directory into the ```sites-enabled``` directory. 
+
 ```text
 $ sudo ln -s /etc/nginx/sites-available/transfer_project /etc/nginx/sites-enabled
-$ sudo nginx -t
-#should be no errors
-$ rm /etc/nginx/sites-enabled/default
-$ sudo service nginx restart
 ```
 
-## View site at AWS instance IP address
+Run run ```nginx -t``` to see if there are any errors in the configuration file. The results should be ```syntax is ok``` and ```test is successful```. 
 
-When everything works, browse to the IP address of the AWS instance. You see the following
+```text
+$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
 
-[image of transfer app running](#)
+If the nginx configuration works, remove the ```default``` file from the ```sites-enabled``` directory with the ```rm``` command. 
+
+```text
+$ sudo rm /etc/nginx/sites-enabled/default
+```
+
+Finally restart ```nginx``` and check the status. If the results are ``` Active: active (running)```, the deployment is successful. All that is left to do is view the running Django app with a web browser.
+
+```text
+$ sudo service nginx restart
+
+$ sudo service nginx status
+ nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: active (running)
+```
+
+## View site at Django app with a web browser
+
+Once everything works, browse to the IP address of the AWS instance. The IP address should be something like:
+
+ > http://35.215.335.124/
+ 
+ You should see the following:
+
+![Django app running](images/django_app_running.png)
+
+The Django App is now running on AWS.
+
+## Why this is not a permenent solution
+
+This deployment is not a permenent solution. The **BIG** reason we can't run the Django App in this state is security. 
+
+As it stands we don't have SSL running and we are allowing connections over regular http. We should only be using https.
+
+![Django Admin Login Screen](images/django_admin_login_screen.png)
+
+In addition, the Django admin is running and it may be possible for attackers to access our database or backend. Further development is needed before our Django App is running with the bare minimum of security. 

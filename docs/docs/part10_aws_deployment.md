@@ -1,3 +1,5 @@
+Title: Oregon Engineering College Transfer App - Part 10: AWS Deployment
+
 # Deployment on AWS
 
 In this section, we are going to deploy the Oregon Engineering Transfer App on Amazon Web Services (AWS). More specifically, we are going to deploy this Django web app on an AWS EC2 instance. An instance is AWS speak for a virtual private server. This same type of virtual private server is available from other companies such as Digital Ocean and Linode. AWS calls virtual private servers EC2 _instances_. 

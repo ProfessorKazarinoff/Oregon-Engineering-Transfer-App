@@ -1,8 +1,9 @@
+asgiref==3.2.3
 certifi==2018.10.15
 Click==7.0
-django>=2.2.4
-django-crispy-forms==1.7.0
-Jinja2>=2.10.1
+Django==3.0.3
+django-crispy-forms==1.8.1
+Jinja2==2.11.1
 livereload==2.5.2
 Markdown==3.0.1
 MarkupSafe==1.0
@@ -11,7 +12,8 @@ mkdocs-material==3.0.6
 Pygments==2.2.0
 pymdown-extensions==6.0
 pytz==2018.5
-pyyaml>=4.2b1
+PyYAML==5.3
 six==1.11.0
+sqlparse==0.3.0
 tornado==5.1.1
 wincertstore==0.2

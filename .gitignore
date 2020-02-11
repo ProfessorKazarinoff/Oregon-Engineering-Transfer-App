@@ -207,3 +207,7 @@ docs/site/
 *.pyc
 venv/
 env/
+
+# VS Code
+.vscode/
+.vscode

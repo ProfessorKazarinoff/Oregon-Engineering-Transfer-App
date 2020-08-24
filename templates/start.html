@@ -1,0 +1,11 @@
+<!-- templates/start.html -->
+
+{% extends 'bootstrap_base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Start</h1>
+        <p class="lead">Below is the transfer table for PCC and PSU, OSU, OIT, UP</p>
+        <a class="btn btn-lg btn-success" href="{% url 'home' %}" role="button">Back »</a>
+    </div>
+{% endblock content %}

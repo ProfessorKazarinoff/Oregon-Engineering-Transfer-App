@@ -3,9 +3,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from .models import Course
+from .models import CommunityCollegeCourse
 
 
-class CourseListView(ListView):
-    model = Course
+class CommunityCollegeCourseListView(ListView):
+    model = CommunityCollegeCourse
     template_name = "courses/course_list.html"

@@ -2,6 +2,6 @@
 
 from django.urls import path
 
-from .views import CourseListView
+from .views import CommunityCollegeCourseListView
 
-urlpatterns = [path("", CourseListView.as_view(), name="course_list")]
+urlpatterns = [path("", CommunityCollegeCourseListView.as_view(), name="course_list")]

@@ -22,13 +22,7 @@ class College(models.Model):
 class UniversityCourse(models.Model):
     course_number = models.CharField(max_length=10)
     course_name = models.CharField(max_length=50)
-    credits = models.FloatField()
     college = models.ForeignKey(College, on_delete=models.CASCADE)
-    department = models.CharField(max_length=100)
-    pre_reqs = models.CharField(max_length=50)
-    course_description = models.TextField()
-    course_outcomes = models.TextField()
-    course_URL = models.URLField()
     date_added = models.DateTimeField(auto_now_add=True)
     added_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
@@ -36,7 +30,7 @@ class UniversityCourse(models.Model):
         ordering = ['course_number']
 
     def __str__(self):
-        return "".format(self.course_number, self.course_name, self.college)
+        return f"{self.course_number} - {self.course_name} at {self.college}"
 
     def get_absolute_url(self):
         return reverse("course_detail", args=[str(self.id)])
@@ -59,7 +53,7 @@ class CommunityCollegeCourse(models.Model):
         ordering = ['course_number']
 
     def __str__(self):
-        return "".format(self.course_number, self.course_name, self.college)
+        return f"{self.course_number} - {self.course_name} at {self.college}"
 
     def get_absolute_url(self):
         return reverse("course_detail", args=[str(self.id)])
@@ -71,7 +65,6 @@ class Major(models.Model):
     website = models.URLField()
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     community_college_courses = models.ManyToManyField(CommunityCollegeCourse)
-    university_courses = models.ManyToManyField(UniversityCourse)
     date_added = models.DateTimeField(auto_now_add=True)
     added_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
@@ -79,7 +72,7 @@ class Major(models.Model):
         ordering = ['abbreviation']
 
     def __str__(self):
-        return " ".format(self.abbreviation, self.name, self.college)
+        return f"{self.abbreviation} - {self.name} at {self.college}"
 
     def get_absolute_url(self):
         return reverse("major_detail", args=[str(self.id)])

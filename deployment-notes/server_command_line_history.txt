@@ -1,42 +1,36 @@
- 1  ls
-    2  sudo apt-get -y update && sudo apt-get -y upgrade
-    4  sudo apt-get install python-pip python-dev nginx git tree curl wget
-    6  sudo pip install virtualenv
-    8  git clone https://github.com/ProfessorKazarinoff/Oregon-Engineering-Transfer-App.git repo_name
-   12  cd repo_name
-   13  ls
-   14  virtualenv venv --python=python3
-   15  source venv/bin/activate
-   16  pip install -r requirements.txt
-   41  pip install django
-   42  pip install django-crispy-forms
-   43  pip install django-bootstrap4
-   44  pip install django bcrypt django-extensions
-   45  pip install gunicorn
-   46  ls
-   47  cd transfer_project
-   48  ls
-   49  nano settings.py
-   50  cd ..
-   51  ls
-   52  python manage.py collectstatic
-   53  gunicorn --bind 0.0.0.0:8000 transfer_project.wsgi:application
-   54  deactivate
-   55  sudo vim /etc/systemd/system/gunicorn.service
-   56  sudo systemctl daemon-reload
-   57  sudo systemctl start gunicorn
-   58  sudo systemctl enable gunicorn
-   59  sudo systemctl status gunicorn
-   60  sudo vim /etc/nginx/sites-available/transfer_project
-   61  sudo ln -s /etc/nginx/sites-available/transfer_project /etc/nginx/sites-enabled
-   62  sudo nginx -t
-   63  sudo rm /etc/nginx/sites-enabled/default
-   64  sudo service nginx restart
-   65  cd /etc/nginx/sites-available
-   66  ls
-   67  sudo vim transfer_project
-   68  cd ..
-   69  cd systemd/system
-   70  ls
-   71  sudo vim gunicorn.service
-   72  history
+# deployment-notes/server_command_line_history.txt
+sudo apt-get -y update && sudo apt-get -y upgrade
+sudo apt-get install python-pip python-dev nginx git tree curl wget
+sudo pip install virtualenv
+git clone https://github.com/ProfessorKazarinoff/Oregon-Engineering-Transfer-App.git repo_name
+cd repo_name
+ls
+virtualenv venv --python=python3
+source venv/bin/activate
+pip install -r requirements.txt
+pip install gunicorn
+cd transfer_project
+nano settings.py
+cd ..
+ls
+python manage.py collectstatic
+gunicorn --bind 0.0.0.0:8000 transfer_project.wsgi:application
+deactivate
+sudo nano /etc/systemd/system/gunicorn.service
+sudo systemctl daemon-reload
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
+sudo systemctl status gunicorn
+sudo nano /etc/nginx/sites-available/transfer_project
+sudo ln -s /etc/nginx/sites-available/transfer_project /etc/nginx/sites-enabled
+sudo nginx -t
+sudo rm /etc/nginx/sites-enabled/default
+sudo service nginx restart
+cd /etc/nginx/sites-available
+ls
+sudo nano transfer_project
+cd ..
+cd systemd/system
+ls
+sudo nano gunicorn.service
+history

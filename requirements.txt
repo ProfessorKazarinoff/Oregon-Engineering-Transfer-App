@@ -18,7 +18,7 @@ mccabe==0.6.1
 mkdocs==1.0.4
 mkdocs-material==3.0.6
 pathspec==0.8.0
-Pygments==2.2.0
+Pygments==2.7.4
 pylint==2.6.0
 pymdown-extensions==6.0
 pytz==2018.5
